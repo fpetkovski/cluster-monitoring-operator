@@ -3,6 +3,7 @@
 ## 4.9
 
 - [#1241](https://github.com/openshift/cluster-monitoring-operator/pull/1241) Add config option to disable Grafana deployment.
+- [#1241](https://github.com/openshift/cluster-monitoring-operator/pull/1241) Allow configuring additional Alertmanagers in User Workload Prometheus.
 
 ## 4.8
 

@@ -296,7 +296,7 @@ func (t *PrometheusTask) Run() error {
 			return errors.Wrap(err, "syncing Prometheus trusted CA bundle ConfigMap failed")
 		}
 
-		secret, err := t.factory.AdditionalAlertManagerConfigsSecret()
+		secret, err := t.factory.PrometheusK8sAdditionalAlertManagerConfigsSecret()
 		if err != nil {
 			return errors.Wrap(err, "initializing Prometheus additionalAlertManagerConfigs secret failed")
 		}
@@ -309,7 +309,7 @@ func (t *PrometheusTask) Run() error {
 		} else {
 			err = t.client.DeleteSecret(&v1.Secret{
 				ObjectMeta: metav1.ObjectMeta{
-					Name:      t.factory.GetAdditionalAlertmanagerConfigSecretName(),
+					Name:      manifests.PrometheusK8sAdditionalAlertmanagerConfigSecretName,
 					Namespace: t.client.Namespace(),
 				},
 			})
