@@ -18,6 +18,7 @@ import (
 	"bufio"
 	"context"
 	"fmt"
+	"k8s.io/client-go/rest"
 	"os/exec"
 	"regexp"
 	"strconv"
@@ -51,6 +52,7 @@ const (
 )
 
 type Framework struct {
+	RestConfig          *rest.Config
 	OperatorClient      *client.Client
 	KubeClient          kubernetes.Interface
 	ThanosQuerierClient *PrometheusClient
@@ -117,6 +119,7 @@ func New(kubeConfigPath string) (*Framework, cleanUpFunc, error) {
 	}
 
 	f := &Framework{
+		RestConfig:               config,
 		OperatorClient:           operatorClient,
 		KubeClient:               kubeClient,
 		APIServicesClient:        apiServicesClient,

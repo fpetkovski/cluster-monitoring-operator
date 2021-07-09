@@ -50,7 +50,7 @@ type scenario struct {
 	assertion func(*testing.T)
 }
 
-func TestUserWorkloadMonitoringWithStorage(t *testing.T) {
+func TestUWPrometheusWithStorage(t *testing.T) {
 	cm := &v1.ConfigMap{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      clusterMonitorConfigMapName,
@@ -113,7 +113,7 @@ func TestUserWorkloadMonitoringWithStorage(t *testing.T) {
 	}
 }
 
-func TestUserWorkloadMonitoringWithAdditionalAlertmanagerConfigs(t *testing.T) {
+func TestUWPrometheusWithAdditionalAlertmanagers(t *testing.T) {
 	cm := &v1.ConfigMap{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      clusterMonitorConfigMapName,
@@ -135,8 +135,8 @@ func TestUserWorkloadMonitoringWithAdditionalAlertmanagerConfigs(t *testing.T) {
 			Namespace: f.UserWorkloadMonitoringNs,
 		},
 		Data: map[string]string{
-			"config.yaml":
-			`prometheus:
+			"config.yaml": `
+prometheus:
   additionalAlertManagerConfigs:
   - scheme: https
     pathPrefix: /prefix
@@ -157,6 +157,7 @@ func TestUserWorkloadMonitoringWithAdditionalAlertmanagerConfigs(t *testing.T) {
 		},
 	}
 
+	alertmanagersDiscoveredQuery := `max by (job) (prometheus_notifications_alertmanagers_discovered{job="prometheus-user-workload"})`
 	testCases := []struct {
 		name      string
 		scenarios []scenario
@@ -165,9 +166,9 @@ func TestUserWorkloadMonitoringWithAdditionalAlertmanagerConfigs(t *testing.T) {
 			name: "Test enabling and disabling additional alertmanager configs",
 			scenarios: []scenario{
 				{"enable user workload monitoring with 2 more alertmanagers, assert prometheus rollout", createUserWorkloadAssets(cm)},
-				{"assert 5 alertmanagers are discovered (3 built-in and 2 from the additional configs)", assertAlertmanagerInstancesDiscovered(5)},
-				{"disable additional alertmanagers", disableAdditionalAlertmanagerConfigs},
-				{"assert 3 alertmanagers are discovered", assertAlertmanagerInstancesDiscovered(3)},
+				{"assert 5 alertmanagers are discovered (3 built-in and 2 from the additional configs)", assertMetricValue(alertmanagersDiscoveredQuery, 5)},
+				{"disable additional alertmanagers", disableUserWorkloadMonitoringConfig},
+				{"assert 3 alertmanagers are discovered", assertMetricValue(alertmanagersDiscoveredQuery, 3)},
 				{"assert additional-alertmanager-configs secret is deleted", assertSecretDoesNotExist(manifests.PrometheusUWAdditionalAlertmanagerConfigSecretName, f.UserWorkloadMonitoringNs)},
 				{"assert assets are deleted when user workload monitoring is disabled", assertDeletedUserWorkloadAssets(cm)},
 			},
@@ -199,6 +200,159 @@ func TestUserWorkloadMonitoringWithAdditionalAlertmanagerConfigs(t *testing.T) {
 	}
 }
 
+func TestUWThanosRulerWithAdditionalAlertmanagers(t *testing.T) {
+	cm := &v1.ConfigMap{
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      clusterMonitorConfigMapName,
+			Namespace: f.Ns,
+		},
+		Data: map[string]string{
+			"config.yaml": `enableUserWorkload: true`,
+		},
+	}
+
+	uwmCM := &v1.ConfigMap{
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      userWorkloadMonitorConfigMapName,
+			Namespace: f.UserWorkloadMonitoringNs,
+		},
+		Data: map[string]string{
+			"config.yaml":
+			`thanosRuler:
+  additionalAlertManagerConfigs:
+  - scheme: http
+    apiVersion: v2
+    staticConfigs: ["dnssrv+_web._tcp.alertmanager-operated.openshift-user-workload-monitoring.svc"]
+`,
+		},
+	}
+
+	//     tlsConfig:
+	//      key:
+	//        name: alertmanager-tls
+	//        key: tls.key
+	//      cert:
+	//        name: alertmanager-tls
+	//        key: tls.crt
+	//      ca:
+	//        name: alertmanager-tls
+	//        key: tls.ca
+
+	//alertmanagersDiscoveredQuery := `max (sum by (pod) (thanos_rule_alertmanagers_dns_provider_results)) OR on () vector(0)`
+	testCases := []struct {
+		name      string
+		scenarios []scenario
+	}{
+		{
+			name: "Test enabling and disabling additional alertmanager configs",
+			scenarios: []scenario{
+				{"enable user workload monitoring", createUserWorkloadAssets(cm)},
+				{"assert thanos ruler rollout", assertThanosRulerDeployment},
+				{"create alertmanager", createAlertmanager},
+				{"configure thanos ruler with the additional alertmanager", createUserWorkloadAssets(uwmCM)},
+				{"create alerting rule that always fires", createPrometheusRule},
+				{"start alertmanager port forward", startAlertmanagerPortForward},
+				{"verify alertmanager received the alert", verifyAlertmanagerAlertReceived},
+				{"delete additional alertmanager", deleteAlertmanager},
+				{"disable additional alertmanagers", disableUserWorkloadMonitoringConfig},
+			},
+		},
+	}
+
+	for _, tt := range testCases {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			if err := f.OperatorClient.CreateOrUpdateConfigMap(cm); err != nil {
+				t.Fatal(err)
+			}
+
+			if err := f.OperatorClient.CreateOrUpdateConfigMap(uwmCM); err != nil {
+				t.Fatal(err)
+			}
+
+			for _, scenario := range tt.scenarios {
+				t.Run(scenario.name, scenario.assertion)
+			}
+		})
+	}
+}
+
+func createPrometheusRule(t *testing.T) {
+	if err := f.OperatorClient.CreateOrUpdatePrometheusRule(&monitoringv1.PrometheusRule{
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      "non-monitoring-prometheus-rules",
+			Namespace: "default",
+		},
+		Spec: monitoringv1.PrometheusRuleSpec{
+			Groups: []monitoringv1.RuleGroup{
+				{
+					Name: "test-group",
+					Rules: []monitoringv1.Rule{
+						{
+							Alert: "AdditionalTestAlertRule",
+							Expr:  intstr.FromString("vector(1)"),
+						},
+					},
+				},
+			},
+		},
+	}); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func createAlertmanager(t *testing.T) {
+	additionalAlertmanager := monitoringv1.Alertmanager{
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      "alertmanager-e2e-test",
+			Namespace: f.UserWorkloadMonitoringNs,
+		},
+		Spec: monitoringv1.AlertmanagerSpec{},
+	}
+	if err := f.OperatorClient.CreateOrUpdateAlertmanager(&additionalAlertmanager); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func startAlertmanagerPortForward(t *testing.T) {
+	if err := startPortForward(f.RestConfig, "https",
+		"alertmanager-alertmanager-e2e-test-0",
+		f.UserWorkloadMonitoringNs,
+		"9093",
+	); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func verifyAlertmanagerAlertReceived(t *testing.T) {
+	err := framework.Poll(time.Second, 5*time.Minute, func() error {
+		resp, err := http.Get("http://localhost:9093/api/v2/alerts")
+		if err != nil {
+			return err
+		}
+
+		payload, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			return err
+		}
+		fmt.Println("received + " + string(payload))
+		if string(payload) == "[]" {
+			return fmt.Errorf("alertmanager received no alerts")
+		}
+		return nil
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func deleteAlertmanager(t *testing.T) {
+	amClient := f.MonitoringClient.Alertmanagers(f.UserWorkloadMonitoringNs)
+	if err := amClient.Delete(context.Background(), "alertmanager-e2e-test", metav1.DeleteOptions{}); err != nil {
+		t.Fatal(err)
+	}
+}
+
 func createSelfSignedCertificateSecret(secretName string) error {
 	crt, key, err := cert.GenerateSelfSignedCertKey("host", []net.IP{}, []string{})
 	if err != nil {
@@ -217,16 +371,7 @@ func createSelfSignedCertificateSecret(secretName string) error {
 		},
 	}
 
-	secretsClient := f.KubeClient.CoreV1().Secrets(f.UserWorkloadMonitoringNs)
-	if err := secretsClient.Delete(context.Background(), "alertmanager-tls", metav1.DeleteOptions{}); err != nil {
-		return err
-	}
-
-	if _, err := secretsClient.Create(context.Background(), tlsSecret, metav1.CreateOptions{}); err != nil {
-		return err
-	}
-
-	return nil
+	return f.OperatorClient.CreateOrUpdateSecret(tlsSecret)
 }
 
 func createUserWorkloadAssets(cm *v1.ConfigMap) func(*testing.T) {
@@ -280,6 +425,16 @@ func createUserWorkloadAssets(cm *v1.ConfigMap) func(*testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
+
+		//err = f.OperatorClient.WaitForStatefulsetRollout(&appsv1.StatefulSet{
+		//	ObjectMeta: metav1.ObjectMeta{
+		//		Name:      "thanos-ruler",
+		//		Namespace: f.UserWorkloadMonitoringNs,
+		//	},
+		//})
+		//if err != nil {
+		//	t.Fatal(err)
+		//}
 	}
 }
 
@@ -315,7 +470,6 @@ func assertThanosRulerDeployment(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-
 }
 
 func assertMetricsForMonitoringComponents(t *testing.T) {
@@ -340,17 +494,16 @@ func assertMetricsForMonitoringComponents(t *testing.T) {
 	}
 }
 
-func assertAlertmanagerInstancesDiscovered(expectedInstances int) func(_ *testing.T) {
+func assertMetricValue(query string, expectedValue int) func(_ *testing.T) {
 	return func(t *testing.T) {
-		query := `max by (job) (prometheus_notifications_alertmanagers_discovered{job="prometheus-user-workload"})`
 		f.ThanosQuerierClient.WaitForQueryReturn(
 			t, 10*time.Minute, query,
 			func(i int) error {
-				if i == expectedInstances {
+				if i == expectedValue {
 					return nil
 				}
 
-				return fmt.Errorf("expected %d targets to be up but got %d", expectedInstances, i)
+				return fmt.Errorf("expected %d targets to be up but got %d", expectedValue, i)
 			},
 		)
 	}
@@ -520,17 +673,14 @@ func deployUserApplication(t *testing.T) {
 	}
 }
 
-func disableAdditionalAlertmanagerConfigs(t *testing.T) {
+func disableUserWorkloadMonitoringConfig(t *testing.T) {
 	uwmCM := &v1.ConfigMap{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      userWorkloadMonitorConfigMapName,
 			Namespace: f.UserWorkloadMonitoringNs,
 		},
-		Data: map[string]string{
-			"config.yaml": `prometheus: {}`,
-		},
 	}
-	if err := f.OperatorClient.CreateOrUpdateConfigMap(uwmCM); err != nil {
+	if err := f.OperatorClient.DeleteConfigMap(uwmCM); err != nil {
 		t.Fatal(err)
 	}
 }

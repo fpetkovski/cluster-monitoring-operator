@@ -40,19 +40,39 @@ type Config struct {
 
 // GetPrometheusUWAdditionalAlertmanagerConfigs returns the alertmanager configurations for
 // the User Workload Monitoring Prometheus instance.
-// If no additional configurations are specified, GetPrometheusUWAdditionalAlertmanagerConfigs returns an empty array.
+// If no additional configurations are specified, GetPrometheusUWAdditionalAlertmanagerConfigs returns nil.
 func (c Config) GetPrometheusUWAdditionalAlertmanagerConfigs() []AdditionalAlertmanagerConfig {
 	if c.UserWorkloadConfiguration == nil {
-		return []AdditionalAlertmanagerConfig{}
+		return nil
 	}
 
 	if c.UserWorkloadConfiguration.Prometheus == nil {
-		return []AdditionalAlertmanagerConfig{}
+		return nil
 	}
 
 	alertmanagerConfigs := c.UserWorkloadConfiguration.Prometheus.AlertmanagerConfigs
-	if alertmanagerConfigs == nil {
-		return []AdditionalAlertmanagerConfig{}
+	if alertmanagerConfigs == nil || len(alertmanagerConfigs) == 0 {
+		return nil
+	}
+
+	return alertmanagerConfigs
+}
+
+// GetThanosRulerAlertmanagerConfigs returns the alertmanager configurations for
+// the User Workload Monitoring Thanos Ruler instance.
+// If no additional configurations are specified, GetThanosRulerAlertmanagerConfigs returns nil.
+func (c Config) GetThanosRulerAlertmanagerConfigs() []AdditionalAlertmanagerConfig {
+	if c.UserWorkloadConfiguration == nil {
+		return nil
+	}
+
+	if c.UserWorkloadConfiguration.ThanosRuler == nil {
+		return nil
+	}
+
+	alertmanagerConfigs := c.UserWorkloadConfiguration.ThanosRuler.AlertManagersConfigs
+	if alertmanagerConfigs == nil || len(alertmanagerConfigs) == 0 {
+		return nil
 	}
 
 	return alertmanagerConfigs
@@ -156,11 +176,12 @@ type AlertmanagerMainConfig struct {
 }
 
 type ThanosRulerConfig struct {
-	LogLevel            string                               `json:"logLevel"`
-	NodeSelector        map[string]string                    `json:"nodeSelector"`
-	Tolerations         []v1.Toleration                      `json:"tolerations"`
-	Resources           *v1.ResourceRequirements             `json:"resources"`
-	VolumeClaimTemplate *monv1.EmbeddedPersistentVolumeClaim `json:"volumeClaimTemplate"`
+	LogLevel             string                               `json:"logLevel"`
+	NodeSelector         map[string]string                    `json:"nodeSelector"`
+	Tolerations          []v1.Toleration                      `json:"tolerations"`
+	Resources            *v1.ResourceRequirements             `json:"resources"`
+	VolumeClaimTemplate  *monv1.EmbeddedPersistentVolumeClaim `json:"volumeClaimTemplate"`
+	AlertManagersConfigs []AdditionalAlertmanagerConfig       `json:"additionalAlertManagerConfigs,omitempty"`
 }
 
 type ThanosQuerierConfig struct {
