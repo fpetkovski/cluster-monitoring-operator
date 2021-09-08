@@ -174,6 +174,29 @@ func (c *Client) InfrastructureListWatchForResource(ctx context.Context, resourc
 	}
 }
 
+func (c *Client) ApiServersListWatchForResource(ctx context.Context, resource string) *cache.ListWatch {
+	apiServerInterface := c.oscclient.ConfigV1().APIServers()
+
+	return &cache.ListWatch{
+		ListFunc: func(options metav1.ListOptions) (runtime.Object, error) {
+			return apiServerInterface.List(
+				ctx,
+				metav1.ListOptions{
+					FieldSelector: fields.OneTermEqualSelector("metadata.name", resource).String(),
+				},
+			)
+		},
+		WatchFunc: func(options metav1.ListOptions) (watch.Interface, error) {
+			return apiServerInterface.Watch(
+				ctx,
+				metav1.ListOptions{
+					FieldSelector: fields.OneTermEqualSelector("metadata.name", resource).String(),
+				},
+			)
+		},
+	}
+}
+
 func (c *Client) AssurePrometheusOperatorCRsExist(ctx context.Context) error {
 	return wait.Poll(time.Second, time.Minute*5, func() (bool, error) {
 		_, err := c.mclient.MonitoringV1().Prometheuses(c.namespace).List(ctx, metav1.ListOptions{})

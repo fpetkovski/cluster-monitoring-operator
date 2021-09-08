@@ -131,6 +131,14 @@ rules:
   - update
   - create
 - apiGroups:
+  - config.openshift.io
+  resources:
+  - apiserver
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
   - policy
   resources:
   - poddisruptionbudgets

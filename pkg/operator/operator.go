@@ -255,6 +255,16 @@ func New(
 	})
 	o.informers = append(o.informers, informer)
 
+	informer = cache.NewSharedIndexInformer(
+		o.client.ApiServersListWatchForResource(ctx, clusterResourceName),
+		&configv1.APIServer{}, resyncPeriod, cache.Indexers{},
+	)
+	informer.AddEventHandler(cache.ResourceEventHandlerFuncs{
+		UpdateFunc: func(_, newObj interface{}) {
+			o.handleEvent(newObj) },
+	})
+	o.informers = append(o.informers, informer)
+
 	kubeInformersOperatorNS := informers.NewSharedInformerFactoryWithOptions(
 		c.KubernetesInterface(),
 		resyncPeriod,
