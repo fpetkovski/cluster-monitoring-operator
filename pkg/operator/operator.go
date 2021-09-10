@@ -198,7 +198,7 @@ func New(
 		UpdateFunc: func(_, newObj interface{}) { o.handleEvent(newObj) },
 		DeleteFunc: o.handleEvent,
 	})
-	o.informers = append(o.informers, informer)
+	o.informers  = append(o.informers, informer)
 
 	o.cmapInf = cache.NewSharedIndexInformer(
 		o.client.ConfigMapListWatchForNamespace(namespace), &v1.ConfigMap{}, resyncPeriod, cache.Indexers{},
