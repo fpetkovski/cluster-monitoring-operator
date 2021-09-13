@@ -198,7 +198,7 @@ func New(
 		UpdateFunc: func(_, newObj interface{}) { o.handleEvent(newObj) },
 		DeleteFunc: o.handleEvent,
 	})
-	o.informers  = append(o.informers, informer)
+	o.informers = append(o.informers, informer)
 
 	o.cmapInf = cache.NewSharedIndexInformer(
 		o.client.ConfigMapListWatchForNamespace(namespace), &v1.ConfigMap{}, resyncPeriod, cache.Indexers{},
@@ -259,9 +259,11 @@ func New(
 		o.client.ApiServersListWatchForResource(ctx, clusterResourceName),
 		&configv1.APIServer{}, resyncPeriod, cache.Indexers{},
 	)
+
 	informer.AddEventHandler(cache.ResourceEventHandlerFuncs{
 		UpdateFunc: func(_, newObj interface{}) {
-			o.handleEvent(newObj) },
+			o.handleEvent(newObj)
+		},
 	})
 	o.informers = append(o.informers, informer)
 
@@ -420,6 +422,12 @@ func (o *Operator) handleEvent(obj interface{}) {
 
 	if _, ok := obj.(*configv1.Infrastructure); ok {
 		klog.Infof("Triggering update due to an infrastructure update")
+		o.enqueue(cmoConfigMap)
+		return
+	}
+
+	if _, ok := obj.(*configv1.APIServer); ok {
+		klog.Infof("Triggering update due to an apiserver config update")
 		o.enqueue(cmoConfigMap)
 		return
 	}

@@ -299,6 +299,10 @@ func (c *Client) GetInfrastructure(ctx context.Context, name string) (*configv1.
 	return c.oscclient.ConfigV1().Infrastructures().Get(ctx, name, metav1.GetOptions{})
 }
 
+func (c *Client) GetAPIServerConfig(ctx context.Context, name string) (*configv1.APIServer, error) {
+	return c.oscclient.ConfigV1().APIServers().Get(ctx, name, metav1.GetOptions{})
+}
+
 func (c *Client) GetConfigmap(ctx context.Context, namespace, name string) (*v1.ConfigMap, error) {
 	return c.kclient.CoreV1().ConfigMaps(namespace).Get(ctx, name, metav1.GetOptions{})
 }

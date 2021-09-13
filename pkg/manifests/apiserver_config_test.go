@@ -9,96 +9,122 @@ import (
 )
 
 func TestGetTLSCiphers(t *testing.T) {
-	defaultCiphers := configv1.TLSProfiles[configv1.TLSProfileIntermediateType].Ciphers
+	defaultCiphers := manifests.APIServerDefaultTLSCiphers
+	defaultTLSVersion := manifests.APIServerDefaultMinTLSVersion
 
 	testCases := []struct {
-		name            string
-		config          *manifests.APIServerConfig
-		expectedCiphers []string
+		name                  string
+		config                *manifests.APIServerConfig
+		expectedCiphers       []string
+		expectedMinTLSVersion configv1.TLSProtocolVersion
 	}{
 		{
-			name: "nil config",
-			config: nil,
-			expectedCiphers: defaultCiphers,
+			name:                  "nil config",
+			config:                nil,
+			expectedCiphers:       defaultCiphers,
+			expectedMinTLSVersion: defaultTLSVersion,
 		},
 		{
-			name: "nil profile",
-			config: newApiserverConfig(nil),
-			expectedCiphers: defaultCiphers,
+			name:                  "nil profile",
+			config:                newApiserverConfig(nil),
+			expectedCiphers:       defaultCiphers,
+			expectedMinTLSVersion: defaultTLSVersion,
 		},
 		{
 			name: "empty profile",
 			config: newApiserverConfig(&configv1.TLSSecurityProfile{
 				Type: "",
 			}),
-			expectedCiphers: defaultCiphers,
+			expectedCiphers:       defaultCiphers,
+			expectedMinTLSVersion: defaultTLSVersion,
 		},
 		{
 			name: "invalid profile",
 			config: newApiserverConfig(&configv1.TLSSecurityProfile{
 				Type: "invalid-profile",
 			}),
-			expectedCiphers: defaultCiphers,
+			expectedCiphers:       defaultCiphers,
+			expectedMinTLSVersion: defaultTLSVersion,
 		},
 		{
 			name: "old profile",
 			config: newApiserverConfig(&configv1.TLSSecurityProfile{
 				Type: configv1.TLSProfileOldType,
 			}),
-			expectedCiphers: configv1.TLSProfiles[configv1.TLSProfileOldType].Ciphers,
+			expectedCiphers:       configv1.TLSProfiles[configv1.TLSProfileOldType].Ciphers,
+			expectedMinTLSVersion: configv1.TLSProfiles[configv1.TLSProfileOldType].MinTLSVersion,
 		},
 		{
 			name: "intermediate profile",
 			config: newApiserverConfig(&configv1.TLSSecurityProfile{
 				Type: configv1.TLSProfileIntermediateType,
 			}),
-			expectedCiphers: defaultCiphers,
+			expectedCiphers:       defaultCiphers,
+			expectedMinTLSVersion: defaultTLSVersion,
 		},
 		{
 			name: "modern profile",
 			config: newApiserverConfig(&configv1.TLSSecurityProfile{
 				Type: configv1.TLSProfileModernType,
 			}),
-			expectedCiphers: configv1.TLSProfiles[configv1.TLSProfileModernType].Ciphers,
+			expectedCiphers:       configv1.TLSProfiles[configv1.TLSProfileModernType].Ciphers,
+			expectedMinTLSVersion: configv1.TLSProfiles[configv1.TLSProfileModernType].MinTLSVersion,
 		},
 		{
-			name: "custom profile without ciphers",
+			name: "custom profile without TLS configuration",
 			config: newApiserverConfig(&configv1.TLSSecurityProfile{
 				Type: configv1.TLSProfileCustomType,
 			}),
-			expectedCiphers: defaultCiphers,
+			expectedCiphers:       defaultCiphers,
+			expectedMinTLSVersion: defaultTLSVersion,
 		},
 		{
-			name: "custom profile with ciphers",
+			name: "custom profile without configuration",
+			config: newApiserverConfig(&configv1.TLSSecurityProfile{
+				Type:   configv1.TLSProfileCustomType,
+				Custom: &configv1.CustomTLSProfile{},
+			}),
+			expectedCiphers:       defaultCiphers,
+			expectedMinTLSVersion: defaultTLSVersion,
+		},
+		{
+			name: "custom profile with configuration",
 			config: newApiserverConfig(&configv1.TLSSecurityProfile{
 				Type: configv1.TLSProfileCustomType,
 				Custom: &configv1.CustomTLSProfile{
 					TLSProfileSpec: configv1.TLSProfileSpec{
-						Ciphers: []string{"cipher-1", "cipher-2"},
+						Ciphers:       []string{"cipher-1", "cipher-2"},
+						MinTLSVersion: configv1.VersionTLS11,
 					},
 				},
 			}),
-			expectedCiphers: []string{"cipher-1", "cipher-2"},
+			expectedCiphers:       []string{"cipher-1", "cipher-2"},
+			expectedMinTLSVersion: configv1.VersionTLS11,
 		},
 	}
 
 	for _, tt := range testCases {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
-			actual := tt.config.GetTLSCiphers()
-			if !reflect.DeepEqual(tt.expectedCiphers, actual) {
-				t.Fatalf("invalid ciphers, got %s, want %s", strings.Join(actual, ", "), strings.Join(tt.expectedCiphers, ", "))
+			actualCiphers := tt.config.GetTLSCiphers()
+			if !reflect.DeepEqual(tt.expectedCiphers, actualCiphers) {
+				t.Fatalf("invalid ciphers, got %s, want %s", strings.Join(actualCiphers, ", "), strings.Join(tt.expectedCiphers, ", "))
+			}
+
+			actualTLSVersion := tt.config.GetMinTLSVersion()
+			if tt.expectedMinTLSVersion != actualTLSVersion {
+				t.Fatalf("invalid min TLS version, got %s, want %s", actualTLSVersion, tt.expectedMinTLSVersion)
 			}
 		})
 	}
 }
 
 func newApiserverConfig(profile *configv1.TLSSecurityProfile) *manifests.APIServerConfig {
-	config := manifests.APIServerConfig(configv1.APIServer{
+	config := manifests.NewAPIServerConfig(&configv1.APIServer{
 		Spec: configv1.APIServerSpec{
 			TLSSecurityProfile: profile,
 		},
 	})
 
-	return &config
+	return config
 }

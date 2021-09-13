@@ -1,0 +1,1714 @@
+Running: ./operator -images=prometheus-operator=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:661513328004b57bb79c0d01b44d6d35fcbb667f395fd5ac1198011e1d9f9310 -images=prometheus-config-reloader=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:d0990216a947494d2beecd1f993b3a835465c63a677afaa47cc85488601d7b7f -images=configmap-reloader=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:9e0cbf605831ef3e37aa6c3fce23e2fb0ac6b7efe8628a6069940ff178d3f6b6 -images=prometheus=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:7167b69895361209dfe8e7b90ce3f3fc232fd50ab8d8670b38e1da44b4be174f -images=alertmanager=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:0000e7f443284f35e54920114416a9db777ce5242f8703e20d33472bab6c9b07 -images=grafana=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:bbb1eb0552e8dcd6eeb182cb8ed0ed817b2a2dd5ee0ba4f44695d740711aa930 -images=oauth-proxy=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:0e72ed64cdf76828392ef8cfe4ee49d644a013ac00ff1590d6c53774d77615e3 -images=node-exporter=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:a2e08075a17560fe3b30a05720582f635f72112cd728c6a29800cf5fde6d1e61 -images=kube-state-metrics=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:528e6c82956e31470b3f17716b2082e26689355e229995fb34178dffea1eded2 -images=openshift-state-metrics=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:1688c10b68ff6ad4bf176dcd206947134ead8cb5c01df413af325f9295914c08 -images=kube-rbac-proxy=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:511e2288e987027a9e044f789ca117cd1d9a91744a8427e3dc841dd613554613 -images=telemeter-client=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:35d53cefb758d9284d8e2be01731f1a7fa640cdceb98f0ec6dbce5f94d302b01 -images=prom-label-proxy=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:cacb46d2c797009f387ec9f517c1e576530099c7dbcb33f8880fea219f880bd1 -images=k8s-prometheus-adapter=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:01cdc14fae750cf93c5341425fea5ec073bd75567f63513555a6b56bb15a164f -images=thanos=registry.ci.openshift.org/ocp/4.9-2021-09-13-151725@sha256:ced57adab8175ff46f7ddb61489afefabcf7340e75bd1b3e19c1fd18231a612b -assets assets/ -telemetry-config /tmp/telemetry-config.yaml -kubeconfig /home/fpetkovski/.kube/openshift-hourly -namespace=openshift-monitoring -configmap=cluster-monitoring-config -logtostderr=true -v=4
+I0914 16:46:43.397913  547510 main.go:120] Configured matches for telemetry:
+I0914 16:46:43.397949  547510 main.go:122] {__name__=~"cluster:usage:.*"}
+I0914 16:46:43.397954  547510 main.go:122] {__name__="count:up0"}
+I0914 16:46:43.397958  547510 main.go:122] {__name__="count:up1"}
+I0914 16:46:43.397962  547510 main.go:122] {__name__="cluster_version"}
+I0914 16:46:43.397966  547510 main.go:122] {__name__="cluster_version_available_updates"}
+I0914 16:46:43.397970  547510 main.go:122] {__name__="cluster_operator_up"}
+I0914 16:46:43.397974  547510 main.go:122] {__name__="cluster_operator_conditions"}
+I0914 16:46:43.397978  547510 main.go:122] {__name__="cluster_version_payload"}
+I0914 16:46:43.397982  547510 main.go:122] {__name__="cluster_installer"}
+I0914 16:46:43.397986  547510 main.go:122] {__name__="cluster_infrastructure_provider"}
+I0914 16:46:43.397991  547510 main.go:122] {__name__="cluster_feature_set"}
+I0914 16:46:43.397996  547510 main.go:122] {__name__="instance:etcd_object_counts:sum"}
+I0914 16:46:43.398003  547510 main.go:122] {__name__="ALERTS",alertstate="firing"}
+I0914 16:46:43.398008  547510 main.go:122] {__name__="code:apiserver_request_total:rate:sum"}
+I0914 16:46:43.398012  547510 main.go:122] {__name__="cluster:capacity_cpu_cores:sum"}
+I0914 16:46:43.398016  547510 main.go:122] {__name__="cluster:capacity_memory_bytes:sum"}
+I0914 16:46:43.398021  547510 main.go:122] {__name__="cluster:cpu_usage_cores:sum"}
+I0914 16:46:43.398027  547510 main.go:122] {__name__="cluster:memory_usage_bytes:sum"}
+I0914 16:46:43.398034  547510 main.go:122] {__name__="openshift:cpu_usage_cores:sum"}
+I0914 16:46:43.398039  547510 main.go:122] {__name__="openshift:memory_usage_bytes:sum"}
+I0914 16:46:43.398044  547510 main.go:122] {__name__="workload:cpu_usage_cores:sum"}
+I0914 16:46:43.398049  547510 main.go:122] {__name__="workload:memory_usage_bytes:sum"}
+I0914 16:46:43.398053  547510 main.go:122] {__name__="cluster:virt_platform_nodes:sum"}
+I0914 16:46:43.398057  547510 main.go:122] {__name__="cluster:node_instance_type_count:sum"}
+I0914 16:46:43.398061  547510 main.go:122] {__name__="cnv:vmi_status_running:count"}
+I0914 16:46:43.398065  547510 main.go:122] {__name__="node_role_os_version_machine:cpu_capacity_cores:sum"}
+I0914 16:46:43.398071  547510 main.go:122] {__name__="node_role_os_version_machine:cpu_capacity_sockets:sum"}
+I0914 16:46:43.398076  547510 main.go:122] {__name__="subscription_sync_total"}
+I0914 16:46:43.398083  547510 main.go:122] {__name__="olm_resolution_duration_seconds"}
+I0914 16:46:43.398088  547510 main.go:122] {__name__="csv_succeeded"}
+I0914 16:46:43.398094  547510 main.go:122] {__name__="csv_abnormal"}
+I0914 16:46:43.398099  547510 main.go:122] {__name__="cluster:kube_persistentvolumeclaim_resource_requests_storage_bytes:provisioner:sum"}
+I0914 16:46:43.398105  547510 main.go:122] {__name__="cluster:kubelet_volume_stats_used_bytes:provisioner:sum"}
+I0914 16:46:43.398111  547510 main.go:122] {__name__="ceph_cluster_total_bytes"}
+I0914 16:46:43.398117  547510 main.go:122] {__name__="ceph_cluster_total_used_raw_bytes"}
+I0914 16:46:43.398123  547510 main.go:122] {__name__="ceph_health_status"}
+I0914 16:46:43.398129  547510 main.go:122] {__name__="job:ceph_osd_metadata:count"}
+I0914 16:46:43.398135  547510 main.go:122] {__name__="job:kube_pv:count"}
+I0914 16:46:43.398140  547510 main.go:122] {__name__="job:ceph_pools_iops:total"}
+I0914 16:46:43.398146  547510 main.go:122] {__name__="job:ceph_pools_iops_bytes:total"}
+I0914 16:46:43.398158  547510 main.go:122] {__name__="job:ceph_versions_running:count"}
+I0914 16:46:43.398164  547510 main.go:122] {__name__="job:noobaa_total_unhealthy_buckets:sum"}
+I0914 16:46:43.398169  547510 main.go:122] {__name__="job:noobaa_bucket_count:sum"}
+I0914 16:46:43.398175  547510 main.go:122] {__name__="job:noobaa_total_object_count:sum"}
+I0914 16:46:43.398180  547510 main.go:122] {__name__="noobaa_accounts_num"}
+I0914 16:46:43.398186  547510 main.go:122] {__name__="noobaa_total_usage"}
+I0914 16:46:43.398191  547510 main.go:122] {__name__="console_url"}
+I0914 16:46:43.398196  547510 main.go:122] {__name__="cluster:network_attachment_definition_instances:max"}
+I0914 16:46:43.398202  547510 main.go:122] {__name__="cluster:network_attachment_definition_enabled_instance_up:max"}
+I0914 16:46:43.398207  547510 main.go:122] {__name__="insightsclient_request_send_total"}
+I0914 16:46:43.398213  547510 main.go:122] {__name__="cam_app_workload_migrations"}
+I0914 16:46:43.398219  547510 main.go:122] {__name__="cluster:apiserver_current_inflight_requests:sum:max_over_time:2m"}
+I0914 16:46:43.398241  547510 main.go:122] {__name__="cluster:alertmanager_integrations:max"}
+I0914 16:46:43.398249  547510 main.go:122] {__name__="cluster:telemetry_selected_series:count"}
+I0914 16:46:43.398256  547510 main.go:122] {__name__="openshift:prometheus_tsdb_head_series:sum"}
+I0914 16:46:43.398265  547510 main.go:122] {__name__="openshift:prometheus_tsdb_head_samples_appended_total:sum"}
+I0914 16:46:43.398271  547510 main.go:122] {__name__="monitoring:container_memory_working_set_bytes:sum"}
+I0914 16:46:43.398277  547510 main.go:122] {__name__="namespace_job:scrape_series_added:topk3_sum1h"}
+I0914 16:46:43.398283  547510 main.go:122] {__name__="namespace_job:scrape_samples_post_metric_relabeling:topk3"}
+I0914 16:46:43.398288  547510 main.go:122] {__name__="monitoring:haproxy_server_http_responses_total:sum"}
+I0914 16:46:43.398294  547510 main.go:122] {__name__="rhmi_status"}
+I0914 16:46:43.398299  547510 main.go:122] {__name__="cluster_legacy_scheduler_policy"}
+I0914 16:46:43.398305  547510 main.go:122] {__name__="cluster_master_schedulable"}
+I0914 16:46:43.398310  547510 main.go:122] {__name__="che_workspace_status"}
+I0914 16:46:43.398316  547510 main.go:122] {__name__="che_workspace_started_total"}
+I0914 16:46:43.398322  547510 main.go:122] {__name__="che_workspace_failure_total"}
+I0914 16:46:43.398328  547510 main.go:122] {__name__="che_workspace_start_time_seconds_sum"}
+I0914 16:46:43.398334  547510 main.go:122] {__name__="che_workspace_start_time_seconds_count"}
+I0914 16:46:43.398340  547510 main.go:122] {__name__="cco_credentials_mode"}
+I0914 16:46:43.398346  547510 main.go:122] {__name__="cluster:kube_persistentvolume_plugin_type_counts:sum"}
+I0914 16:46:43.398352  547510 main.go:122] {__name__="visual_web_terminal_sessions_total"}
+I0914 16:46:43.398358  547510 main.go:122] {__name__="acm_managed_cluster_info"}
+I0914 16:46:43.398364  547510 main.go:122] {__name__="cluster:vsphere_vcenter_info:sum"}
+I0914 16:46:43.398371  547510 main.go:122] {__name__="cluster:vsphere_esxi_version_total:sum"}
+I0914 16:46:43.398377  547510 main.go:122] {__name__="cluster:vsphere_node_hw_version_total:sum"}
+I0914 16:46:43.398383  547510 main.go:122] {__name__="openshift:build_by_strategy:sum"}
+I0914 16:46:43.398390  547510 main.go:122] {__name__="rhods_aggregate_availability"}
+I0914 16:46:43.398396  547510 main.go:122] {__name__="rhods_total_users"}
+I0914 16:46:43.398403  547510 main.go:122] {__name__="instance:etcd_disk_wal_fsync_duration_seconds:histogram_quantile",quantile="0.99"}
+I0914 16:46:43.398409  547510 main.go:122] {__name__="instance:etcd_mvcc_db_total_size_in_bytes:sum"}
+I0914 16:46:43.398416  547510 main.go:122] {__name__="instance:etcd_network_peer_round_trip_time_seconds:histogram_quantile",quantile="0.99"}
+I0914 16:46:43.398423  547510 main.go:122] {__name__="instance:etcd_mvcc_db_total_size_in_use_in_bytes:sum"}
+I0914 16:46:43.398430  547510 main.go:122] {__name__="instance:etcd_disk_backend_commit_duration_seconds:histogram_quantile",quantile="0.99"}
+I0914 16:46:43.398436  547510 main.go:122] {__name__="jaeger_operator_instances_storage_types"}
+I0914 16:46:43.398443  547510 main.go:122] {__name__="jaeger_operator_instances_strategies"}
+I0914 16:46:43.398449  547510 main.go:122] {__name__="jaeger_operator_instances_agent_strategies"}
+`--release-version` flag is not set.I0914 16:46:43.398467  547510 main.go:146] Release version set to 
+I0914 16:46:44.251570  547510 operator.go:347] Connection established (cluster-version: v1.22.1-1672+75ee3073266f07-dirty)
+I0914 16:46:44.251712  547510 operator.go:371] Waiting for initial cache sync.
+I0914 16:46:44.253333  547510 reflector.go:219] Starting reflector *v1.Infrastructure (15m0s) from pkg/operator/operator.go:364
+I0914 16:46:44.253643  547510 reflector.go:255] Listing and watching *v1.Infrastructure from pkg/operator/operator.go:364
+I0914 16:46:44.254493  547510 reflector.go:219] Starting reflector *v1.ConfigMap (15m0s) from pkg/operator/operator.go:364
+I0914 16:46:44.254547  547510 reflector.go:255] Listing and watching *v1.ConfigMap from pkg/operator/operator.go:364
+I0914 16:46:44.254561  547510 reflector.go:219] Starting reflector *v1.ConfigMap (15m0s) from pkg/operator/operator.go:364
+I0914 16:46:44.254599  547510 reflector.go:219] Starting reflector *v1.Secret (15m0s) from pkg/operator/operator.go:364
+I0914 16:46:44.254642  547510 reflector.go:255] Listing and watching *v1.Secret from pkg/operator/operator.go:364
+I0914 16:46:44.254601  547510 reflector.go:255] Listing and watching *v1.ConfigMap from pkg/operator/operator.go:364
+I0914 16:46:44.254992  547510 reflector.go:219] Starting reflector *v1.ConfigMap (15m0s) from pkg/operator/operator.go:361
+I0914 16:46:44.255025  547510 reflector.go:219] Starting reflector *v1.Secret (15m0s) from k8s.io/client-go/informers/factory.go:134
+I0914 16:46:44.255049  547510 reflector.go:255] Listing and watching *v1.ConfigMap from pkg/operator/operator.go:361
+I0914 16:46:44.255064  547510 reflector.go:255] Listing and watching *v1.Secret from k8s.io/client-go/informers/factory.go:134
+I0914 16:46:44.253926  547510 reflector.go:219] Starting reflector *v1.APIServer (15m0s) from pkg/operator/operator.go:364
+I0914 16:46:44.255404  547510 reflector.go:255] Listing and watching *v1.APIServer from pkg/operator/operator.go:364
+I0914 16:46:44.256344  547510 reflector.go:219] Starting reflector *v1.ConfigMap (15m0s) from pkg/operator/operator.go:364
+I0914 16:46:44.256375  547510 reflector.go:255] Listing and watching *v1.ConfigMap from pkg/operator/operator.go:364
+I0914 16:46:44.256499  547510 reflector.go:219] Starting reflector *v1.ConfigMap (15m0s) from pkg/operator/operator.go:364
+I0914 16:46:44.256534  547510 reflector.go:255] Listing and watching *v1.ConfigMap from pkg/operator/operator.go:364
+I0914 16:46:44.257338  547510 reflector.go:219] Starting reflector *v1.CertificateSigningRequest (15m0s) from k8s.io/client-go/informers/factory.go:134
+I0914 16:46:44.257396  547510 reflector.go:255] Listing and watching *v1.CertificateSigningRequest from k8s.io/client-go/informers/factory.go:134
+I0914 16:46:44.994558  547510 operator.go:430] Triggering update due to an apiserver config update
+I0914 16:46:44.996551  547510 operator.go:424] Triggering update due to an infrastructure update
+I0914 16:46:45.189543  547510 operator.go:460] Triggering an update due to ConfigMap or Secret: openshift-monitoring/metrics-client-certs
+I0914 16:46:45.189737  547510 operator.go:460] Triggering an update due to ConfigMap or Secret: openshift-monitoring/prometheus-adapter-tls
+I0914 16:46:45.189876  547510 operator.go:460] Triggering an update due to ConfigMap or Secret: openshift-monitoring/grpc-tls
+I0914 16:46:45.308582  547510 operator.go:460] Triggering an update due to ConfigMap or Secret: openshift-monitoring/telemeter-trusted-ca-bundle
+I0914 16:46:45.308597  547510 operator.go:460] Triggering an update due to ConfigMap or Secret: openshift-monitoring/alertmanager-trusted-ca-bundle
+I0914 16:46:45.351922  547510 shared_informer.go:270] caches populated
+I0914 16:46:45.351959  547510 shared_informer.go:270] caches populated
+I0914 16:46:45.351965  547510 shared_informer.go:270] caches populated
+I0914 16:46:45.351970  547510 operator.go:379] Initial cache sync done.
+I0914 16:46:45.351986  547510 operator.go:393] ConfigMap to configure stack does not exist. Reconciling with default config every 15m0s.
+W0914 16:46:45.352007  547510 operator.go:683] No Cluster Monitoring ConfigMap was found. Using defaults.
+I0914 16:46:45.352006  547510 base_controller.go:67] Waiting for caches to sync for OpenShiftMonitoringClientCertRequester
+I0914 16:46:45.352021  547510 shared_informer.go:270] caches populated
+I0914 16:46:45.352026  547510 base_controller.go:73] Caches are synced for OpenShiftMonitoringClientCertRequester 
+I0914 16:46:45.352029  547510 base_controller.go:110] Starting #1 worker of OpenShiftMonitoringClientCertRequester controller ...
+I0914 16:46:45.484430  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m19.515596844s, remaining/total=0.9494416487096676
+I0914 16:46:45.484507  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 22.58% of its life remaining
+I0914 16:46:45.695384  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m19.304647577s, remaining/total=0.9494391966380755
+I0914 16:46:45.695456  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 24.07% of its life remaining
+I0914 16:46:45.900047  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m19.099987837s, remaining/total=0.9494368176758652
+I0914 16:46:45.900121  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 21.07% of its life remaining
+I0914 16:46:46.105650  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m18.894378579s, remaining/total=0.9494344276764696
+I0914 16:46:46.105728  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 21.90% of its life remaining
+I0914 16:46:46.309702  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m18.690331881s, remaining/total=0.9494320558402515
+I0914 16:46:46.309778  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 21.59% of its life remaining
+I0914 16:46:46.453355  547510 operator.go:556] Updating ClusterOperator status to in progress.
+I0914 16:46:46.453584  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m18.546429372s, remaining/total=0.9494303831193203
+I0914 16:46:46.453628  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 22.34% of its life remaining
+I0914 16:46:46.617551  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m18.382477044s, remaining/total=0.9494284773395483
+I0914 16:46:46.617634  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 21.42% of its life remaining
+I0914 16:46:46.821216  547510 tasks.go:47] processing task group 1 of 2
+I0914 16:46:46.821409  547510 tasks.go:68] running task 2 of 2: Updating Prometheus Operator
+I0914 16:46:46.821450  547510 tasks.go:68] running task 1 of 2: Updating metrics scraping client CA
+I0914 16:46:46.821496  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator/operator-certs-ca-bundle.yaml
+I0914 16:46:46.821596  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m18.178433658s, remaining/total=0.9494261055418289
+I0914 16:46:46.821676  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 21.47% of its life remaining
+I0914 16:46:47.026592  547510 assets.go:54] Reading manifest from file: assets/cluster-monitoring-operator/metrics-client-ca.yaml
+I0914 16:46:47.026659  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m17.973349s, remaining/total=0.9494237216403771
+I0914 16:46:47.026684  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 23.40% of its life remaining
+I0914 16:46:47.026740  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator/service-account.yaml
+I0914 16:46:47.206982  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m17.793033299s, remaining/total=0.949421625652966
+I0914 16:46:47.207027  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 21.09% of its life remaining
+I0914 16:46:47.207646  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator/cluster-role.yaml
+I0914 16:46:47.337428  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m17.662580706s, remaining/total=0.9494201092736868
+I0914 16:46:47.337451  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 21.02% of its life remaining
+I0914 16:46:47.352643  547510 tasks.go:74] ran task 1 of 2: Updating metrics scraping client CA
+I0914 16:46:47.538288  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator/cluster-role-binding.yaml
+I0914 16:46:47.538512  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m17.461502949s, remaining/total=0.949417771948401
+I0914 16:46:47.538554  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 21.80% of its life remaining
+I0914 16:46:47.666982  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m17.333077036s, remaining/total=0.9494162791272246
+I0914 16:46:47.667071  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 22.85% of its life remaining
+I0914 16:46:47.667917  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator/service.yaml
+I0914 16:46:47.845693  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m17.154333038s, remaining/total=0.9494142014092689
+I0914 16:46:47.845772  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 24.31% of its life remaining
+I0914 16:46:48.050384  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m16.949641518s, remaining/total=0.9494118220776483
+I0914 16:46:48.050451  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 21.47% of its life remaining
+I0914 16:46:48.254723  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator/deployment.yaml
+I0914 16:46:48.255036  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h41m16.744985123s, remaining/total=0.9494094431543201
+I0914 16:46:48.255089  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 21.49% of its life remaining
+I0914 16:46:51.332660  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator/prometheus-rule-validating-webhook.yaml
+I0914 16:46:51.633539  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator/prometheus-rule.yaml
+I0914 16:46:51.913315  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator/service-monitor.yaml
+I0914 16:46:52.247639  547510 tasks.go:74] ran task 2 of 2: Updating Prometheus Operator
+I0914 16:46:52.247661  547510 tasks.go:47] processing task group 2 of 2
+I0914 16:46:52.247693  547510 tasks.go:68] running task 15 of 15: Updating Control Plane components
+I0914 16:46:52.247693  547510 tasks.go:68] running task 6 of 15: Updating Alertmanager
+I0914 16:46:52.247707  547510 assets.go:54] Reading manifest from file: assets/alertmanager/route.yaml
+I0914 16:46:52.247706  547510 tasks.go:68] running task 3 of 15: Updating Grafana
+I0914 16:46:52.247723  547510 tasks.go:68] running task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:46:52.247735  547510 tasks.go:68] running task 10 of 15: Updating prometheus-adapter
+I0914 16:46:52.247745  547510 tasks.go:68] running task 11 of 15: Updating Telemeter client
+I0914 16:46:52.247752  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/cluster-role.yaml
+I0914 16:46:52.247767  547510 tasks.go:68] running task 8 of 15: Updating kube-state-metrics
+I0914 16:46:52.247773  547510 tasks.go:68] running task 7 of 15: Updating node-exporter
+I0914 16:46:52.247784  547510 assets.go:54] Reading manifest from file: assets/node-exporter/security-context-constraints.yaml
+I0914 16:46:52.247928  547510 tasks.go:68] running task 4 of 15: Updating Prometheus-k8s
+I0914 16:46:52.247942  547510 tasks.go:68] running task 9 of 15: Updating openshift-state-metrics
+I0914 16:46:52.247953  547510 tasks.go:68] running task 13 of 15: Updating Thanos Querier
+I0914 16:46:52.247966  547510 tasks.go:68] running task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:46:52.247951  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/serving-certs-ca-bundle.yaml
+I0914 16:46:52.247975  547510 tasks.go:68] running task 5 of 15: Updating Prometheus-user-workload
+I0914 16:46:52.247740  547510 tasks.go:68] running task 12 of 15: Updating configuration sharing
+I0914 16:46:52.248062  547510 assets.go:54] Reading manifest from file: assets/telemeter-client/serving-certs-ca-bundle.yaml
+I0914 16:46:52.248122  547510 tasks.go:68] running task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:46:52.248142  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator-user-workload/deployment.yaml
+I0914 16:46:52.248181  547510 assets.go:54] Reading manifest from file: assets/cluster-monitoring-operator/service.yaml
+I0914 16:46:52.248308  547510 assets.go:54] Reading manifest from file: assets/openshift-state-metrics/service-account.yaml
+I0914 16:46:52.248372  547510 assets.go:54] Reading manifest from file: assets/kube-state-metrics/service-account.yaml
+I0914 16:46:52.248426  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/service.yaml
+I0914 16:46:52.248494  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/thanos-ruler-prometheus-rule.yaml
+I0914 16:46:52.248573  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/service-monitor-thanos-sidecar.yaml
+I0914 16:46:52.248634  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/route.yaml
+I0914 16:46:52.248711  547510 assets.go:54] Reading manifest from file: assets/grafana/cluster-role.yaml
+I0914 16:46:52.379806  547510 assets.go:54] Reading manifest from file: assets/openshift-state-metrics/cluster-role.yaml
+I0914 16:46:52.380209  547510 assets.go:54] Reading manifest from file: assets/telemeter-client/service-account.yaml
+I0914 16:46:52.380908  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator-user-workload/service-monitor.yaml
+I0914 16:46:52.386302  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/service-monitor.yaml
+I0914 16:46:52.386444  547510 assets.go:54] Reading manifest from file: assets/kube-state-metrics/cluster-role.yaml
+I0914 16:46:52.386839  547510 assets.go:54] Reading manifest from file: assets/control-plane/prometheus-rule.yaml
+I0914 16:46:52.387182  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/route.yaml
+I0914 16:46:52.390637  547510 assets.go:49] Reading manifest from memory: alertmanager/route.yaml
+I0914 16:46:52.557420  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/kubelet-serving-ca-bundle.yaml
+I0914 16:46:52.557679  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator-user-workload/service.yaml
+I0914 16:46:52.558625  547510 assets.go:54] Reading manifest from file: assets/grafana/cluster-role-binding.yaml
+I0914 16:46:52.560093  547510 assets.go:54] Reading manifest from file: assets/telemeter-client/cluster-role.yaml
+I0914 16:46:52.560936  547510 assets.go:54] Reading manifest from file: assets/cluster-monitoring-operator/monitoring-edit-cluster-role.yaml
+I0914 16:46:52.561505  547510 assets.go:54] Reading manifest from file: assets/grafana/route.yaml
+I0914 16:46:52.561799  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/service.yaml
+I0914 16:46:52.562086  547510 assets.go:54] Reading manifest from file: assets/node-exporter/service-account.yaml
+I0914 16:46:52.562501  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/cluster-role-server-resources.yaml
+I0914 16:46:52.562673  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/route.yaml
+I0914 16:46:52.692298  547510 assets.go:54] Reading manifest from file: assets/cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:46:52.692450  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator-user-workload/cluster-role-binding.yaml
+I0914 16:46:52.699731  547510 assets.go:54] Reading manifest from file: assets/node-exporter/cluster-role.yaml
+I0914 16:46:52.699840  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/cluster-role.yaml
+I0914 16:46:52.699874  547510 assets.go:49] Reading manifest from memory: thanos-querier/route.yaml
+I0914 16:46:52.699939  547510 assets.go:54] Reading manifest from file: assets/openshift-state-metrics/cluster-role-binding.yaml
+I0914 16:46:52.700046  547510 assets.go:54] Reading manifest from file: assets/kube-state-metrics/cluster-role-binding.yaml
+I0914 16:46:52.700098  547510 assets.go:49] Reading manifest from memory: grafana/route.yaml
+I0914 16:46:53.015062  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/alertmanager-role-binding.yaml
+I0914 16:46:53.015302  547510 assets.go:54] Reading manifest from file: assets/telemeter-client/cluster-role-binding.yaml
+I0914 16:46:53.017066  547510 assets.go:54] Reading manifest from file: assets/cluster-monitoring-operator/cluster-role-view.yaml
+I0914 16:46:53.017428  547510 assets.go:54] Reading manifest from file: assets/openshift-state-metrics/service.yaml
+I0914 16:46:53.017678  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/cluster-role-binding.yaml
+I0914 16:46:53.017888  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/cluster-role-aggregated-metrics-reader.yaml
+I0914 16:46:53.019038  547510 assets.go:54] Reading manifest from file: assets/kube-state-metrics/service.yaml
+I0914 16:46:53.019312  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/route.yaml
+I0914 16:46:53.045293  547510 assets.go:54] Reading manifest from file: assets/control-plane/service-monitor-kubelet.yaml
+I0914 16:46:53.146104  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator-user-workload/cluster-role.yaml
+I0914 16:46:53.146476  547510 assets.go:54] Reading manifest from file: assets/telemeter-client/cluster-role-binding-view.yaml
+I0914 16:46:53.153720  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/service-account.yaml
+I0914 16:46:53.154290  547510 assets.go:54] Reading manifest from file: assets/node-exporter/cluster-role-binding.yaml
+I0914 16:46:53.277042  547510 assets.go:54] Reading manifest from file: assets/telemeter-client/service.yaml
+I0914 16:46:53.283216  547510 assets.go:54] Reading manifest from file: assets/prometheus-operator-user-workload/service-account.yaml
+I0914 16:46:53.289476  547510 assets.go:54] Reading manifest from file: assets/cluster-monitoring-operator/monitoring-rules-edit-cluster-role.yaml
+I0914 16:46:53.289784  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/alertmanager-role-binding.yaml
+I0914 16:46:53.289824  547510 tasks.go:74] ran task 12 of 15: Updating configuration sharing
+I0914 16:46:53.290039  547510 assets.go:54] Reading manifest from file: assets/node-exporter/service.yaml
+I0914 16:46:53.290280  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/cluster-role-binding.yaml
+I0914 16:46:53.290513  547510 assets.go:54] Reading manifest from file: assets/openshift-state-metrics/deployment.yaml
+I0914 16:46:53.297365  547510 assets.go:54] Reading manifest from file: assets/kube-state-metrics/deployment.yaml
+I0914 16:46:53.325763  547510 assets.go:54] Reading manifest from file: assets/control-plane/service-monitor-etcd.yaml
+I0914 16:46:53.426548  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/cluster-role-binding-delegator.yaml
+I0914 16:46:53.426666  547510 tasks.go:74] ran task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:46:53.426857  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/oauth-cookie-secret.yaml
+I0914 16:46:53.537955  547510 assets.go:54] Reading manifest from file: assets/alertmanager/secret.yaml
+I0914 16:46:53.566695  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/trusted-ca-bundle.yaml
+I0914 16:46:53.567052  547510 assets.go:54] Reading manifest from file: assets/node-exporter/daemonset.yaml
+I0914 16:46:53.567314  547510 assets.go:54] Reading manifest from file: assets/cluster-monitoring-operator/monitoring-rules-view-cluster-role.yaml
+I0914 16:46:53.567592  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/cluster-role-binding-view.yaml
+I0914 16:46:53.567863  547510 assets.go:54] Reading manifest from file: assets/telemeter-client/secret.yaml
+I0914 16:46:53.672468  547510 assets.go:54] Reading manifest from file: assets/alertmanager/kube-rbac-proxy-secret.yaml
+I0914 16:46:53.697580  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/role-binding-auth-reader.yaml
+I0914 16:46:53.802884  547510 assets.go:54] Reading manifest from file: assets/alertmanager/cluster-role.yaml
+I0914 16:46:53.832111  547510 assets.go:54] Reading manifest from file: assets/cluster-monitoring-operator/user-workload-config-edit-role.yaml
+I0914 16:46:53.832506  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/grpc-tls-secret.yaml
+I0914 16:46:53.833077  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/prometheus.yaml
+I0914 16:46:53.833260  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/service-account.yaml
+I0914 16:46:53.838640  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:46:53.838714  547510 assets.go:54] Reading manifest from file: assets/telemeter-client/trusted-ca-bundle.yaml
+I0914 16:46:53.838871  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/oauth-cookie-secret.yaml
+I0914 16:46:53.972076  547510 assets.go:54] Reading manifest from file: assets/grafana/dashboard-datasources.yaml
+I0914 16:46:53.972472  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/config-map.yaml
+I0914 16:46:54.081503  547510 assets.go:54] Reading manifest from file: assets/alertmanager/cluster-role-binding.yaml
+I0914 16:46:54.109275  547510 assets.go:54] Reading manifest from file: assets/cluster-monitoring-operator/monitoring-alertmanager-edit-role.yaml
+I0914 16:46:54.135374  547510 tasks.go:74] ran task 15 of 15: Updating Control Plane components
+I0914 16:46:54.218292  547510 assets.go:54] Reading manifest from file: assets/alertmanager/service-account.yaml
+I0914 16:46:54.224894  547510 assets.go:54] Reading manifest from file: assets/grafana/proxy-secret.yaml
+I0914 16:46:54.247409  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/configmap-prometheus.yaml
+I0914 16:46:54.289955  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/proxy-secret.yaml
+I0914 16:46:54.352357  547510 assets.go:54] Reading manifest from file: assets/alertmanager/proxy-secret.yaml
+I0914 16:46:54.358762  547510 assets.go:54] Reading manifest from file: assets/grafana/config.yaml
+I0914 16:46:54.394597  547510 assets.go:54] Reading manifest from file: assets/cluster-monitoring-operator/prometheus-rule.yaml
+I0914 16:46:54.434572  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:46:54.486306  547510 assets.go:54] Reading manifest from file: assets/alertmanager/service.yaml
+I0914 16:46:54.529188  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/service.yaml
+I0914 16:46:55.320759  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:46:55.459702  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/oauth-htpasswd-secret.yaml
+I0914 16:46:55.466579  547510 assets.go:54] Reading manifest from file: assets/openshift-state-metrics/service-monitor.yaml
+I0914 16:46:55.466692  547510 assets.go:54] Reading manifest from file: assets/kube-state-metrics/prometheus-rule.yaml
+I0914 16:46:55.466807  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/grpc-tls-secret.yaml
+I0914 16:46:55.466943  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/alertmanagers-config-secret.yaml
+I0914 16:46:55.467077  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/thanos-ruler.yaml
+I0914 16:46:55.473374  547510 assets.go:54] Reading manifest from file: assets/grafana/dashboard-definitions.yaml
+I0914 16:46:55.473742  547510 assets.go:54] Reading manifest from file: assets/alertmanager/trusted-ca-bundle.yaml
+I0914 16:46:55.473770  547510 assets.go:54] Reading manifest from file: assets/cluster-monitoring-operator/service-monitor.yaml
+I0914 16:46:55.571402  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/htpasswd-secret.yaml
+I0914 16:46:55.623910  547510 assets.go:54] Reading manifest from file: assets/telemeter-client/deployment.yaml
+I0914 16:46:55.626257  547510 assets.go:54] Reading manifest from file: assets/node-exporter/prometheus-rule.yaml
+I0914 16:46:55.732713  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/kube-rbac-proxy-secret.yaml
+I0914 16:46:55.752335  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:46:55.752365  547510 tasks.go:74] ran task 9 of 15: Updating openshift-state-metrics
+I0914 16:46:55.752526  547510 assets.go:54] Reading manifest from file: assets/kube-state-metrics/service-monitor.yaml
+I0914 16:46:55.882015  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/kube-rbac-proxy-secret.yaml
+I0914 16:46:56.011370  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/kube-rbac-proxy-rules-secret.yaml
+I0914 16:46:56.079777  547510 assets.go:54] Reading manifest from file: assets/node-exporter/service-monitor.yaml
+I0914 16:46:56.146338  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/service-account.yaml
+I0914 16:46:56.147555  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/service-account.yaml
+I0914 16:46:56.157003  547510 tasks.go:74] ran task 8 of 15: Updating kube-state-metrics
+I0914 16:46:56.283200  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/cluster-role.yaml
+I0914 16:46:56.283527  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/cluster-role.yaml
+I0914 16:46:56.298636  547510 tasks.go:74] ran task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:46:56.411291  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/deployment.yaml
+I0914 16:46:57.431736  547510 tasks.go:74] ran task 7 of 15: Updating node-exporter
+I0914 16:46:57.548536  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/cluster-role-binding.yaml
+I0914 16:46:57.548849  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/cluster-role-binding.yaml
+I0914 16:46:58.200707  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/alertmanager-role-binding.yaml
+I0914 16:46:58.201092  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:46:58.209971  547510 assets.go:54] Reading manifest from file: assets/telemeter-client/service-monitor.yaml
+I0914 16:46:58.224532  547510 assets.go:54] Reading manifest from file: assets/alertmanager/alertmanager.yaml
+I0914 16:46:58.393532  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/role-config.yaml
+I0914 16:46:58.597755  547510 tasks.go:74] ran task 11 of 15: Updating Telemeter client
+I0914 16:46:59.473415  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/role-specific-namespaces.yaml
+I0914 16:46:59.474481  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/grpc-tls-secret.yaml
+I0914 16:46:59.474796  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/pod-disruption-budget.yaml
+I0914 16:46:59.827524  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/service-monitor.yaml
+I0914 16:47:00.031479  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/trusted-ca-bundle.yaml
+I0914 16:47:00.375542  547510 assets.go:54] Reading manifest from file: assets/prometheus-adapter/api-service.yaml
+I0914 16:47:00.750136  547510 tasks.go:74] ran task 10 of 15: Updating prometheus-adapter
+I0914 16:47:02.979283  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/role-binding-specific-namespaces.yaml
+I0914 16:47:03.600610  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/deployment.yaml
+I0914 16:47:04.742136  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/service.yaml
+I0914 16:47:04.742469  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/role-binding-config.yaml
+I0914 16:47:04.876580  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/service-thanos-sidecar.yaml
+I0914 16:47:05.255625  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/role-binding-config.yaml
+I0914 16:47:05.255958  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/prometheus-rule.yaml
+I0914 16:47:05.257020  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/pod-disruption-budget.yaml
+I0914 16:47:05.460604  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/role-binding-specific-namespaces.yaml
+I0914 16:47:05.593666  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/role-specific-namespaces.yaml
+I0914 16:47:05.593791  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/service-monitor.yaml
+I0914 16:47:05.615707  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/prometheus-rule-thanos-sidecar.yaml
+I0914 16:47:05.970384  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/role-config.yaml
+I0914 16:47:06.175333  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/query-config-secret.yaml
+I0914 16:47:06.175625  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/cluster-role-binding.yaml
+I0914 16:47:06.176074  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/service.yaml
+I0914 16:47:06.176456  547510 assets.go:54] Reading manifest from file: assets/thanos-querier/prometheus-rule.yaml
+I0914 16:47:06.382379  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/cluster-role.yaml
+I0914 16:47:06.892744  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/service-account.yaml
+I0914 16:47:06.893386  547510 assets.go:54] Reading manifest from file: assets/thanos-ruler/service-monitor.yaml
+I0914 16:47:06.893586  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/service-thanos-sidecar.yaml
+I0914 16:47:06.893857  547510 tasks.go:74] ran task 13 of 15: Updating Thanos Querier
+I0914 16:47:07.096488  547510 assets.go:54] Reading manifest from file: assets/prometheus-user-workload/serving-certs-ca-bundle.yaml
+I0914 16:47:07.096704  547510 tasks.go:74] ran task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:47:07.301586  547510 assets.go:54] Reading manifest from file: assets/cluster-monitoring-operator/metrics-client-certs.yaml
+I0914 16:47:07.622884  547510 tasks.go:74] ran task 5 of 15: Updating Prometheus-user-workload
+I0914 16:47:08.343659  547510 assets.go:54] Reading manifest from file: assets/grafana/dashboard-sources.yaml
+I0914 16:47:08.433523  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:47:08.600600  547510 assets.go:54] Reading manifest from file: assets/grafana/service-account.yaml
+I0914 16:47:08.836825  547510 assets.go:54] Reading manifest from file: assets/grafana/service.yaml
+I0914 16:47:09.246115  547510 assets.go:54] Reading manifest from file: assets/grafana/trusted-ca-bundle.yaml
+I0914 16:47:09.656889  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/grpc-tls-secret.yaml
+I0914 16:47:10.173506  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/trusted-ca-bundle.yaml
+I0914 16:47:10.188203  547510 assets.go:54] Reading manifest from file: assets/alertmanager/prometheus-rule.yaml
+I0914 16:47:13.140386  547510 assets.go:54] Reading manifest from file: assets/alertmanager/service-monitor.yaml
+I0914 16:47:13.753027  547510 assets.go:54] Reading manifest from file: assets/grafana/deployment.yaml
+I0914 16:47:17.363317  547510 tasks.go:74] ran task 6 of 15: Updating Alertmanager
+I0914 16:47:17.951717  547510 prometheus.go:340] reconciling Prometheus additionalAlertmanagerConfigs secret
+I0914 16:47:18.257970  547510 prometheus.go:345] initializing Prometheus object
+I0914 16:47:18.258040  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/prometheus.yaml
+I0914 16:47:18.259098  547510 prometheus.go:351] reconciling Prometheus object
+I0914 16:47:18.668617  547510 prometheus.go:357] waiting for Prometheus object changes
+I0914 16:47:18.893361  547510 assets.go:54] Reading manifest from file: assets/grafana/service-monitor.yaml
+I0914 16:47:19.281872  547510 tasks.go:74] ran task 3 of 15: Updating Grafana
+I0914 16:47:29.421131  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/service-monitor.yaml
+I0914 16:47:29.762509  547510 assets.go:54] Reading manifest from file: assets/prometheus-k8s/service-monitor-thanos-sidecar.yaml
+I0914 16:47:31.161653  547510 tasks.go:74] ran task 4 of 15: Updating Prometheus-k8s
+I0914 16:47:31.161785  547510 operator.go:580] Updating ClusterOperator status to done.
+I0914 16:47:58.296712  547510 operator.go:430] Triggering update due to an apiserver config update
+W0914 16:47:58.296738  547510 operator.go:683] No Cluster Monitoring ConfigMap was found. Using defaults.
+I0914 16:47:59.320874  547510 operator.go:556] Updating ClusterOperator status to in progress.
+I0914 16:47:59.719459  547510 tasks.go:47] processing task group 1 of 2
+I0914 16:47:59.719566  547510 tasks.go:68] running task 2 of 2: Updating Prometheus Operator
+I0914 16:47:59.719602  547510 assets.go:49] Reading manifest from memory: prometheus-operator/operator-certs-ca-bundle.yaml
+I0914 16:47:59.719598  547510 tasks.go:68] running task 1 of 2: Updating metrics scraping client CA
+I0914 16:47:59.936496  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service-account.yaml
+I0914 16:47:59.936817  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/metrics-client-ca.yaml
+I0914 16:48:00.139781  547510 assets.go:49] Reading manifest from memory: prometheus-operator/cluster-role.yaml
+I0914 16:48:00.346999  547510 tasks.go:74] ran task 1 of 2: Updating metrics scraping client CA
+I0914 16:48:00.476591  547510 assets.go:49] Reading manifest from memory: prometheus-operator/cluster-role-binding.yaml
+I0914 16:48:00.652896  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service.yaml
+I0914 16:48:01.164485  547510 assets.go:49] Reading manifest from memory: prometheus-operator/deployment.yaml
+I0914 16:48:03.729710  547510 operator.go:430] Triggering update due to an apiserver config update
+I0914 16:48:04.272363  547510 assets.go:49] Reading manifest from memory: prometheus-operator/prometheus-rule-validating-webhook.yaml
+I0914 16:48:04.563421  547510 assets.go:49] Reading manifest from memory: prometheus-operator/prometheus-rule.yaml
+I0914 16:48:04.953423  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service-monitor.yaml
+I0914 16:48:05.260701  547510 tasks.go:74] ran task 2 of 2: Updating Prometheus Operator
+I0914 16:48:05.260774  547510 tasks.go:47] processing task group 2 of 2
+I0914 16:48:05.260840  547510 tasks.go:68] running task 15 of 15: Updating Control Plane components
+I0914 16:48:05.260917  547510 tasks.go:68] running task 7 of 15: Updating node-exporter
+I0914 16:48:05.260979  547510 assets.go:49] Reading manifest from memory: node-exporter/security-context-constraints.yaml
+I0914 16:48:05.261016  547510 tasks.go:68] running task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:48:05.261029  547510 tasks.go:68] running task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:48:05.261059  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/deployment.yaml
+I0914 16:48:05.261096  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/service.yaml
+I0914 16:48:05.261295  547510 tasks.go:68] running task 5 of 15: Updating Prometheus-user-workload
+I0914 16:48:05.261343  547510 tasks.go:68] running task 6 of 15: Updating Alertmanager
+I0914 16:48:05.261383  547510 tasks.go:68] running task 4 of 15: Updating Prometheus-k8s
+I0914 16:48:05.261375  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-monitor-thanos-sidecar.yaml
+I0914 16:48:05.261436  547510 tasks.go:68] running task 11 of 15: Updating Telemeter client
+I0914 16:48:05.261448  547510 tasks.go:68] running task 9 of 15: Updating openshift-state-metrics
+I0914 16:48:05.261458  547510 tasks.go:68] running task 8 of 15: Updating kube-state-metrics
+I0914 16:48:05.261485  547510 assets.go:49] Reading manifest from memory: telemeter-client/serving-certs-ca-bundle.yaml
+I0914 16:48:05.261501  547510 tasks.go:68] running task 12 of 15: Updating configuration sharing
+I0914 16:48:05.261515  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service-account.yaml
+I0914 16:48:05.261550  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service-account.yaml
+I0914 16:48:05.261654  547510 tasks.go:68] running task 13 of 15: Updating Thanos Querier
+I0914 16:48:05.261690  547510 assets.go:49] Reading manifest from memory: thanos-querier/service.yaml
+I0914 16:48:05.262187  547510 tasks.go:68] running task 10 of 15: Updating prometheus-adapter
+I0914 16:48:05.262250  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role.yaml
+I0914 16:48:05.260974  547510 tasks.go:68] running task 3 of 15: Updating Grafana
+I0914 16:48:05.262308  547510 assets.go:49] Reading manifest from memory: grafana/cluster-role.yaml
+I0914 16:48:05.262316  547510 tasks.go:68] running task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:48:05.262337  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/serving-certs-ca-bundle.yaml
+I0914 16:48:05.262373  547510 assets.go:49] Reading manifest from memory: thanos-ruler/thanos-ruler-prometheus-rule.yaml
+I0914 16:48:05.262874  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/route.yaml
+I0914 16:48:05.263144  547510 assets.go:49] Reading manifest from memory: alertmanager/route.yaml
+I0914 16:48:05.465546  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/cluster-role.yaml
+I0914 16:48:05.465626  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/cluster-role.yaml
+I0914 16:48:05.465941  547510 assets.go:49] Reading manifest from memory: control-plane/prometheus-rule.yaml
+I0914 16:48:05.467110  547510 assets.go:49] Reading manifest from memory: alertmanager/route.yaml
+I0914 16:48:05.467548  547510 assets.go:49] Reading manifest from memory: telemeter-client/service-account.yaml
+I0914 16:48:05.670626  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-monitor.yaml
+I0914 16:48:05.670739  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service-monitor.yaml
+I0914 16:48:05.671028  547510 assets.go:49] Reading manifest from memory: grafana/route.yaml
+I0914 16:48:05.671093  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-server-resources.yaml
+I0914 16:48:05.672197  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role.yaml
+I0914 16:48:05.672365  547510 assets.go:49] Reading manifest from memory: thanos-ruler/route.yaml
+I0914 16:48:05.672703  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/kubelet-serving-ca-bundle.yaml
+I0914 16:48:05.673106  547510 assets.go:49] Reading manifest from memory: grafana/cluster-role-binding.yaml
+I0914 16:48:05.673395  547510 assets.go:49] Reading manifest from memory: node-exporter/service-account.yaml
+I0914 16:48:05.673447  547510 assets.go:49] Reading manifest from memory: thanos-querier/route.yaml
+I0914 16:48:05.875450  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-rules-edit-cluster-role.yaml
+I0914 16:48:05.876753  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service.yaml
+I0914 16:48:05.876850  547510 assets.go:49] Reading manifest from memory: thanos-querier/route.yaml
+I0914 16:48:05.878054  547510 assets.go:49] Reading manifest from memory: grafana/route.yaml
+I0914 16:48:05.878201  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service.yaml
+I0914 16:48:05.878345  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/cluster-role-binding.yaml
+I0914 16:48:05.878408  547510 assets.go:49] Reading manifest from memory: node-exporter/cluster-role.yaml
+I0914 16:48:05.878740  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/cluster-role-binding.yaml
+I0914 16:48:06.008575  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:48:06.008664  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role-binding.yaml
+I0914 16:48:06.009093  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-aggregated-metrics-reader.yaml
+I0914 16:48:06.009625  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/cluster-role-binding.yaml
+I0914 16:48:06.130358  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service.yaml
+I0914 16:48:06.137012  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service.yaml
+I0914 16:48:06.137108  547510 assets.go:49] Reading manifest from memory: thanos-ruler/cluster-role.yaml
+I0914 16:48:06.137328  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/route.yaml
+I0914 16:48:06.477301  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-rules-view-cluster-role.yaml
+I0914 16:48:06.477377  547510 assets.go:49] Reading manifest from memory: node-exporter/cluster-role-binding.yaml
+I0914 16:48:06.477475  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role-binding-view.yaml
+I0914 16:48:06.477513  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/alertmanager-role-binding.yaml
+I0914 16:48:06.477645  547510 assets.go:49] Reading manifest from memory: thanos-ruler/cluster-role-binding.yaml
+I0914 16:48:06.478162  547510 assets.go:49] Reading manifest from memory: control-plane/service-monitor-kubelet.yaml
+I0914 16:48:06.678273  547510 assets.go:49] Reading manifest from memory: telemeter-client/service.yaml
+I0914 16:48:06.678197  547510 tasks.go:74] ran task 12 of 15: Updating configuration sharing
+I0914 16:48:06.678355  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service-account.yaml
+I0914 16:48:06.678471  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding.yaml
+I0914 16:48:06.678729  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/deployment.yaml
+I0914 16:48:06.679198  547510 assets.go:49] Reading manifest from memory: node-exporter/service.yaml
+I0914 16:48:06.679745  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/deployment.yaml
+I0914 16:48:06.679959  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/cluster-role.yaml
+I0914 16:48:06.807194  547510 assets.go:49] Reading manifest from memory: alertmanager/secret.yaml
+I0914 16:48:06.813883  547510 assets.go:49] Reading manifest from memory: thanos-ruler/alertmanager-role-binding.yaml
+I0914 16:48:06.814056  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding-delegator.yaml
+I0914 16:48:06.814156  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-edit-cluster-role.yaml
+I0914 16:48:06.939834  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service-account.yaml
+I0914 16:48:06.946594  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding-view.yaml
+I0914 16:48:06.946866  547510 assets.go:49] Reading manifest from memory: alertmanager/kube-rbac-proxy-secret.yaml
+I0914 16:48:06.947194  547510 assets.go:49] Reading manifest from memory: thanos-ruler/oauth-cookie-secret.yaml
+I0914 16:48:06.947576  547510 assets.go:49] Reading manifest from memory: control-plane/service-monitor-etcd.yaml
+I0914 16:48:06.951709  547510 assets.go:49] Reading manifest from memory: telemeter-client/secret.yaml
+I0914 16:48:07.032510  547510 assets.go:49] Reading manifest from memory: thanos-querier/oauth-cookie-secret.yaml
+I0914 16:48:07.074171  547510 tasks.go:74] ran task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:48:07.163299  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/cluster-role-view.yaml
+I0914 16:48:07.170884  547510 assets.go:49] Reading manifest from memory: alertmanager/cluster-role.yaml
+I0914 16:48:07.170983  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/role-binding-auth-reader.yaml
+I0914 16:48:07.171151  547510 assets.go:49] Reading manifest from memory: node-exporter/daemonset.yaml
+I0914 16:48:07.171326  547510 assets.go:49] Reading manifest from memory: thanos-ruler/trusted-ca-bundle.yaml
+I0914 16:48:07.171602  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/grpc-tls-secret.yaml
+I0914 16:48:07.172241  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/prometheus.yaml
+I0914 16:48:07.204757  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:48:07.267763  547510 assets.go:49] Reading manifest from memory: grafana/proxy-secret.yaml
+I0914 16:48:07.296791  547510 assets.go:49] Reading manifest from memory: telemeter-client/trusted-ca-bundle.yaml
+I0914 16:48:07.310758  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service-account.yaml
+I0914 16:48:07.400325  547510 assets.go:49] Reading manifest from memory: grafana/config.yaml
+I0914 16:48:07.431775  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/user-workload-config-edit-role.yaml
+I0914 16:48:07.452313  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:48:07.457810  547510 assets.go:49] Reading manifest from memory: alertmanager/cluster-role-binding.yaml
+I0914 16:48:07.464265  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/config-map.yaml
+I0914 16:48:07.660870  547510 assets.go:49] Reading manifest from memory: alertmanager/service-account.yaml
+I0914 16:48:07.667464  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/proxy-secret.yaml
+I0914 16:48:07.702829  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-alertmanager-edit-role.yaml
+I0914 16:48:07.703134  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:48:07.796137  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:48:07.796325  547510 assets.go:49] Reading manifest from memory: alertmanager/proxy-secret.yaml
+I0914 16:48:07.801890  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/configmap-prometheus.yaml
+I0914 16:48:07.930980  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-definitions.yaml
+I0914 16:48:07.931218  547510 assets.go:49] Reading manifest from memory: alertmanager/service.yaml
+I0914 16:48:07.931273  547510 tasks.go:74] ran task 15 of 15: Updating Control Plane components
+I0914 16:48:07.970151  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/prometheus-rule.yaml
+I0914 16:48:10.104420  547510 assets.go:49] Reading manifest from memory: thanos-querier/oauth-htpasswd-secret.yaml
+I0914 16:48:10.104950  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/htpasswd-secret.yaml
+I0914 16:48:10.105380  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service.yaml
+I0914 16:48:10.230006  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service-monitor.yaml
+I0914 16:48:10.235157  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/prometheus-rule.yaml
+I0914 16:48:10.235451  547510 assets.go:49] Reading manifest from memory: thanos-ruler/grpc-tls-secret.yaml
+I0914 16:48:10.235878  547510 assets.go:49] Reading manifest from memory: thanos-ruler/alertmanagers-config-secret.yaml
+I0914 16:48:10.236329  547510 assets.go:49] Reading manifest from memory: thanos-ruler/thanos-ruler.yaml
+I0914 16:48:10.241835  547510 assets.go:49] Reading manifest from memory: alertmanager/trusted-ca-bundle.yaml
+I0914 16:48:10.289857  547510 assets.go:49] Reading manifest from memory: telemeter-client/deployment.yaml
+I0914 16:48:10.374218  547510 assets.go:49] Reading manifest from memory: node-exporter/prometheus-rule.yaml
+I0914 16:48:10.539513  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/service-monitor.yaml
+I0914 16:48:11.049372  547510 assets.go:49] Reading manifest from memory: thanos-querier/kube-rbac-proxy-secret.yaml
+I0914 16:48:11.049659  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/kube-rbac-proxy-secret.yaml
+I0914 16:48:11.177828  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service-monitor.yaml
+I0914 16:48:11.177970  547510 tasks.go:74] ran task 9 of 15: Updating openshift-state-metrics
+I0914 16:48:11.195138  547510 assets.go:49] Reading manifest from memory: thanos-querier/kube-rbac-proxy-rules-secret.yaml
+I0914 16:48:11.305686  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-account.yaml
+I0914 16:48:11.312496  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:48:11.507935  547510 assets.go:49] Reading manifest from memory: thanos-querier/service-account.yaml
+I0914 16:48:11.508112  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/cluster-role.yaml
+I0914 16:48:11.509961  547510 tasks.go:74] ran task 8 of 15: Updating kube-state-metrics
+I0914 16:48:11.511484  547510 assets.go:49] Reading manifest from memory: node-exporter/service-monitor.yaml
+I0914 16:48:11.713091  547510 assets.go:49] Reading manifest from memory: thanos-querier/cluster-role.yaml
+I0914 16:48:12.032157  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/cluster-role-binding.yaml
+I0914 16:48:12.159676  547510 tasks.go:74] ran task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:48:12.291108  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/deployment.yaml
+I0914 16:48:12.382676  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/alertmanager-role-binding.yaml
+I0914 16:48:12.402101  547510 tasks.go:74] ran task 7 of 15: Updating node-exporter
+I0914 16:48:14.398295  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-config.yaml
+I0914 16:48:14.398466  547510 assets.go:49] Reading manifest from memory: thanos-querier/cluster-role-binding.yaml
+I0914 16:48:15.001720  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:48:15.136756  547510 assets.go:49] Reading manifest from memory: alertmanager/alertmanager.yaml
+I0914 16:48:15.142148  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-specific-namespaces.yaml
+I0914 16:48:15.142455  547510 assets.go:49] Reading manifest from memory: telemeter-client/service-monitor.yaml
+I0914 16:48:15.419387  547510 tasks.go:74] ran task 11 of 15: Updating Telemeter client
+I0914 16:48:16.236873  547510 assets.go:49] Reading manifest from memory: thanos-querier/grpc-tls-secret.yaml
+I0914 16:48:16.237068  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/pod-disruption-budget.yaml
+I0914 16:48:16.628369  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service-monitor.yaml
+I0914 16:48:16.818923  547510 assets.go:49] Reading manifest from memory: thanos-querier/trusted-ca-bundle.yaml
+I0914 16:48:17.190575  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/api-service.yaml
+I0914 16:48:17.462962  547510 tasks.go:74] ran task 10 of 15: Updating prometheus-adapter
+I0914 16:48:17.975031  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service.yaml
+I0914 16:48:17.975256  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-binding-specific-namespaces.yaml
+I0914 16:48:18.171130  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-thanos-sidecar.yaml
+I0914 16:48:18.371376  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-binding-config.yaml
+I0914 16:48:20.056361  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-binding-specific-namespaces.yaml
+I0914 16:48:20.484315  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-specific-namespaces.yaml
+I0914 16:48:20.595129  547510 assets.go:49] Reading manifest from memory: thanos-querier/deployment.yaml
+I0914 16:48:20.624057  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-config.yaml
+I0914 16:48:20.638064  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-binding-config.yaml
+I0914 16:48:20.754619  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/cluster-role-binding.yaml
+I0914 16:48:21.280928  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus-rule.yaml
+I0914 16:48:21.280950  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/cluster-role.yaml
+I0914 16:48:21.416468  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-account.yaml
+I0914 16:48:21.416678  547510 assets.go:49] Reading manifest from memory: thanos-ruler/query-config-secret.yaml
+I0914 16:48:21.735187  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/serving-certs-ca-bundle.yaml
+I0914 16:48:21.748382  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus-rule-thanos-sidecar.yaml
+I0914 16:48:21.871911  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service-monitor.yaml
+I0914 16:48:22.053637  547510 tasks.go:74] ran task 5 of 15: Updating Prometheus-user-workload
+I0914 16:48:22.053799  547510 tasks.go:74] ran task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:48:22.053999  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service.yaml
+I0914 16:48:22.406727  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-thanos-sidecar.yaml
+I0914 16:48:22.435870  547510 assets.go:49] Reading manifest from memory: thanos-querier/pod-disruption-budget.yaml
+I0914 16:48:22.878134  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/metrics-client-certs.yaml
+I0914 16:48:22.878315  547510 assets.go:49] Reading manifest from memory: thanos-querier/service-monitor.yaml
+I0914 16:48:23.222367  547510 assets.go:49] Reading manifest from memory: thanos-querier/prometheus-rule.yaml
+I0914 16:48:23.506118  547510 tasks.go:74] ran task 13 of 15: Updating Thanos Querier
+I0914 16:48:23.653810  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-sources.yaml
+I0914 16:48:23.915878  547510 assets.go:49] Reading manifest from memory: grafana/service-account.yaml
+I0914 16:48:24.013739  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:48:24.054629  547510 assets.go:49] Reading manifest from memory: grafana/service.yaml
+I0914 16:48:24.410030  547510 assets.go:49] Reading manifest from memory: grafana/trusted-ca-bundle.yaml
+I0914 16:48:25.914892  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/grpc-tls-secret.yaml
+I0914 16:48:26.663011  547510 assets.go:49] Reading manifest from memory: grafana/deployment.yaml
+I0914 16:48:26.665175  547510 assets.go:49] Reading manifest from memory: alertmanager/prometheus-rule.yaml
+I0914 16:48:26.856037  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/trusted-ca-bundle.yaml
+I0914 16:48:27.277990  547510 assets.go:49] Reading manifest from memory: alertmanager/service-monitor.yaml
+I0914 16:48:27.585159  547510 tasks.go:74] ran task 6 of 15: Updating Alertmanager
+I0914 16:48:28.696036  547510 assets.go:49] Reading manifest from memory: grafana/service-monitor.yaml
+I0914 16:48:29.091351  547510 tasks.go:74] ran task 3 of 15: Updating Grafana
+I0914 16:48:29.190065  547510 prometheus.go:340] reconciling Prometheus additionalAlertmanagerConfigs secret
+I0914 16:48:29.529123  547510 prometheus.go:345] initializing Prometheus object
+I0914 16:48:29.529181  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus.yaml
+I0914 16:48:29.533399  547510 prometheus.go:351] reconciling Prometheus object
+I0914 16:48:29.837873  547510 prometheus.go:357] waiting for Prometheus object changes
+I0914 16:48:40.535911  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-monitor.yaml
+I0914 16:48:40.895824  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-monitor-thanos-sidecar.yaml
+I0914 16:48:42.328681  547510 tasks.go:74] ran task 4 of 15: Updating Prometheus-k8s
+I0914 16:48:42.328786  547510 operator.go:580] Updating ClusterOperator status to done.
+W0914 16:48:42.596998  547510 operator.go:683] No Cluster Monitoring ConfigMap was found. Using defaults.
+I0914 16:48:43.659898  547510 operator.go:556] Updating ClusterOperator status to in progress.
+I0914 16:48:43.940697  547510 tasks.go:47] processing task group 1 of 2
+I0914 16:48:43.940729  547510 tasks.go:68] running task 1 of 2: Updating metrics scraping client CA
+I0914 16:48:43.940729  547510 tasks.go:68] running task 2 of 2: Updating Prometheus Operator
+I0914 16:48:43.940743  547510 assets.go:49] Reading manifest from memory: prometheus-operator/operator-certs-ca-bundle.yaml
+I0914 16:48:44.072355  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service-account.yaml
+I0914 16:48:44.072468  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/metrics-client-ca.yaml
+I0914 16:48:44.275701  547510 assets.go:49] Reading manifest from memory: prometheus-operator/cluster-role.yaml
+I0914 16:48:44.438611  547510 tasks.go:74] ran task 1 of 2: Updating metrics scraping client CA
+I0914 16:48:44.577884  547510 assets.go:49] Reading manifest from memory: prometheus-operator/cluster-role-binding.yaml
+I0914 16:48:44.722334  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service.yaml
+I0914 16:48:45.132499  547510 assets.go:49] Reading manifest from memory: prometheus-operator/deployment.yaml
+I0914 16:48:49.395721  547510 operator.go:430] Triggering update due to an apiserver config update
+I0914 16:49:03.322056  547510 assets.go:49] Reading manifest from memory: prometheus-operator/prometheus-rule-validating-webhook.yaml
+I0914 16:49:03.596014  547510 assets.go:49] Reading manifest from memory: prometheus-operator/prometheus-rule.yaml
+I0914 16:49:03.996236  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service-monitor.yaml
+I0914 16:49:04.281381  547510 tasks.go:74] ran task 2 of 2: Updating Prometheus Operator
+I0914 16:49:04.281438  547510 tasks.go:47] processing task group 2 of 2
+I0914 16:49:04.281537  547510 tasks.go:68] running task 15 of 15: Updating Control Plane components
+I0914 16:49:04.281585  547510 tasks.go:68] running task 7 of 15: Updating node-exporter
+I0914 16:49:04.281624  547510 tasks.go:68] running task 11 of 15: Updating Telemeter client
+I0914 16:49:04.281647  547510 tasks.go:68] running task 3 of 15: Updating Grafana
+I0914 16:49:04.281635  547510 assets.go:49] Reading manifest from memory: node-exporter/security-context-constraints.yaml
+I0914 16:49:04.281673  547510 tasks.go:68] running task 4 of 15: Updating Prometheus-k8s
+I0914 16:49:04.281688  547510 tasks.go:68] running task 8 of 15: Updating kube-state-metrics
+I0914 16:49:04.281698  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/serving-certs-ca-bundle.yaml
+I0914 16:49:04.281712  547510 tasks.go:68] running task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:49:04.281757  547510 tasks.go:68] running task 10 of 15: Updating prometheus-adapter
+I0914 16:49:04.281770  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/deployment.yaml
+I0914 16:49:04.281804  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role.yaml
+I0914 16:49:04.281825  547510 tasks.go:68] running task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:49:04.281852  547510 tasks.go:68] running task 5 of 15: Updating Prometheus-user-workload
+I0914 16:49:04.281868  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/service.yaml
+I0914 16:49:04.281906  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-monitor-thanos-sidecar.yaml
+I0914 16:49:04.282079  547510 tasks.go:68] running task 12 of 15: Updating configuration sharing
+I0914 16:49:04.282115  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/route.yaml
+I0914 16:49:04.282361  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service-account.yaml
+I0914 16:49:04.282742  547510 tasks.go:68] running task 13 of 15: Updating Thanos Querier
+I0914 16:49:04.282806  547510 assets.go:49] Reading manifest from memory: thanos-querier/service.yaml
+I0914 16:49:04.282909  547510 tasks.go:68] running task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:49:04.282928  547510 assets.go:49] Reading manifest from memory: grafana/cluster-role.yaml
+I0914 16:49:04.282949  547510 tasks.go:68] running task 6 of 15: Updating Alertmanager
+I0914 16:49:04.282965  547510 assets.go:49] Reading manifest from memory: thanos-ruler/thanos-ruler-prometheus-rule.yaml
+I0914 16:49:04.282984  547510 assets.go:49] Reading manifest from memory: alertmanager/route.yaml
+I0914 16:49:04.283171  547510 assets.go:49] Reading manifest from memory: telemeter-client/serving-certs-ca-bundle.yaml
+I0914 16:49:04.281727  547510 tasks.go:68] running task 9 of 15: Updating openshift-state-metrics
+I0914 16:49:04.283822  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service-account.yaml
+I0914 16:49:04.416145  547510 assets.go:49] Reading manifest from memory: control-plane/prometheus-rule.yaml
+I0914 16:49:04.416486  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/cluster-role.yaml
+I0914 16:49:04.417044  547510 assets.go:49] Reading manifest from memory: telemeter-client/service-account.yaml
+I0914 16:49:04.417627  547510 assets.go:49] Reading manifest from memory: alertmanager/route.yaml
+I0914 16:49:04.537867  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-monitor.yaml
+I0914 16:49:04.537883  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/cluster-role.yaml
+I0914 16:49:04.537893  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service-monitor.yaml
+I0914 16:49:04.537952  547510 assets.go:49] Reading manifest from memory: thanos-ruler/route.yaml
+I0914 16:49:04.544479  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/kubelet-serving-ca-bundle.yaml
+I0914 16:49:04.550944  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-server-resources.yaml
+I0914 16:49:04.550973  547510 assets.go:49] Reading manifest from memory: grafana/cluster-role-binding.yaml
+I0914 16:49:04.551016  547510 assets.go:49] Reading manifest from memory: thanos-querier/route.yaml
+I0914 16:49:04.551035  547510 assets.go:49] Reading manifest from memory: node-exporter/service-account.yaml
+I0914 16:49:04.551061  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role.yaml
+I0914 16:49:04.551084  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-edit-cluster-role.yaml
+I0914 16:49:04.551146  547510 assets.go:49] Reading manifest from memory: grafana/route.yaml
+I0914 16:49:04.672138  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service.yaml
+I0914 16:49:04.672271  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service.yaml
+I0914 16:49:04.679157  547510 assets.go:49] Reading manifest from memory: grafana/route.yaml
+I0914 16:49:04.679312  547510 assets.go:49] Reading manifest from memory: node-exporter/cluster-role.yaml
+I0914 16:49:04.685686  547510 assets.go:49] Reading manifest from memory: thanos-querier/route.yaml
+I0914 16:49:04.691560  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/cluster-role-binding.yaml
+I0914 16:49:04.801712  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:49:04.801772  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/cluster-role-binding.yaml
+I0914 16:49:04.934136  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/cluster-role-binding.yaml
+I0914 16:49:04.934367  547510 assets.go:49] Reading manifest from memory: thanos-ruler/cluster-role.yaml
+I0914 16:49:04.940735  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service.yaml
+I0914 16:49:04.940981  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/route.yaml
+I0914 16:49:04.941427  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role-binding.yaml
+I0914 16:49:04.941600  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service.yaml
+I0914 16:49:04.941698  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/cluster-role-view.yaml
+I0914 16:49:04.942147  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-aggregated-metrics-reader.yaml
+I0914 16:49:05.014365  547510 assets.go:49] Reading manifest from memory: control-plane/service-monitor-kubelet.yaml
+I0914 16:49:05.064039  547510 assets.go:49] Reading manifest from memory: thanos-ruler/cluster-role-binding.yaml
+I0914 16:49:05.070760  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/alertmanager-role-binding.yaml
+I0914 16:49:05.070834  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role-binding-view.yaml
+I0914 16:49:05.071011  547510 assets.go:49] Reading manifest from memory: node-exporter/cluster-role-binding.yaml
+I0914 16:49:05.196936  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service-account.yaml
+I0914 16:49:05.203376  547510 assets.go:49] Reading manifest from memory: telemeter-client/service.yaml
+I0914 16:49:05.203398  547510 tasks.go:74] ran task 12 of 15: Updating configuration sharing
+I0914 16:49:05.203497  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-rules-edit-cluster-role.yaml
+I0914 16:49:05.212078  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/cluster-role.yaml
+I0914 16:49:05.212095  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding.yaml
+I0914 16:49:05.212114  547510 assets.go:49] Reading manifest from memory: node-exporter/service.yaml
+I0914 16:49:05.219212  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/deployment.yaml
+I0914 16:49:05.219313  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/deployment.yaml
+I0914 16:49:05.478958  547510 assets.go:49] Reading manifest from memory: thanos-ruler/alertmanager-role-binding.yaml
+I0914 16:49:05.479684  547510 assets.go:49] Reading manifest from memory: control-plane/service-monitor-etcd.yaml
+I0914 16:49:05.479754  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service-account.yaml
+I0914 16:49:05.479801  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding-delegator.yaml
+I0914 16:49:05.566526  547510 assets.go:49] Reading manifest from memory: alertmanager/secret.yaml
+I0914 16:49:05.624414  547510 tasks.go:74] ran task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:49:05.624567  547510 assets.go:49] Reading manifest from memory: thanos-ruler/oauth-cookie-secret.yaml
+I0914 16:49:05.624708  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-rules-view-cluster-role.yaml
+I0914 16:49:05.624865  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding-view.yaml
+I0914 16:49:05.625167  547510 assets.go:49] Reading manifest from memory: telemeter-client/secret.yaml
+I0914 16:49:05.625384  547510 assets.go:49] Reading manifest from memory: node-exporter/daemonset.yaml
+I0914 16:49:05.696584  547510 assets.go:49] Reading manifest from memory: alertmanager/kube-rbac-proxy-secret.yaml
+I0914 16:49:05.753423  547510 assets.go:49] Reading manifest from memory: thanos-ruler/trusted-ca-bundle.yaml
+I0914 16:49:05.753542  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/role-binding-auth-reader.yaml
+I0914 16:49:05.817810  547510 assets.go:49] Reading manifest from memory: thanos-querier/oauth-cookie-secret.yaml
+I0914 16:49:05.826580  547510 assets.go:49] Reading manifest from memory: alertmanager/cluster-role.yaml
+I0914 16:49:05.884566  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/user-workload-config-edit-role.yaml
+I0914 16:49:05.891050  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service-account.yaml
+I0914 16:49:05.891126  547510 assets.go:49] Reading manifest from memory: telemeter-client/trusted-ca-bundle.yaml
+I0914 16:49:05.936563  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/grpc-tls-secret.yaml
+I0914 16:49:05.937112  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/prometheus.yaml
+I0914 16:49:05.966656  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:49:06.028357  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:49:06.028470  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/config-map.yaml
+I0914 16:49:06.080145  547510 assets.go:49] Reading manifest from memory: grafana/proxy-secret.yaml
+I0914 16:49:06.086777  547510 assets.go:49] Reading manifest from memory: alertmanager/cluster-role-binding.yaml
+I0914 16:49:06.160626  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-alertmanager-edit-role.yaml
+I0914 16:49:06.212590  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/proxy-secret.yaml
+I0914 16:49:06.221111  547510 assets.go:49] Reading manifest from memory: grafana/config.yaml
+I0914 16:49:06.221149  547510 assets.go:49] Reading manifest from memory: alertmanager/service-account.yaml
+I0914 16:49:06.290550  547510 tasks.go:74] ran task 15 of 15: Updating Control Plane components
+I0914 16:49:06.296432  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/configmap-prometheus.yaml
+I0914 16:49:06.344720  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:49:06.353285  547510 assets.go:49] Reading manifest from memory: alertmanager/proxy-secret.yaml
+I0914 16:49:06.429112  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/prometheus-rule.yaml
+I0914 16:49:06.482633  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:49:06.490687  547510 assets.go:49] Reading manifest from memory: alertmanager/service.yaml
+I0914 16:49:06.563729  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service.yaml
+I0914 16:49:07.780722  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-definitions.yaml
+I0914 16:49:08.039188  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/prometheus-rule.yaml
+I0914 16:49:08.039757  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/htpasswd-secret.yaml
+I0914 16:49:08.050384  547510 assets.go:49] Reading manifest from memory: thanos-ruler/grpc-tls-secret.yaml
+I0914 16:49:08.050505  547510 assets.go:49] Reading manifest from memory: thanos-ruler/alertmanagers-config-secret.yaml
+I0914 16:49:08.050589  547510 assets.go:49] Reading manifest from memory: thanos-ruler/thanos-ruler.yaml
+I0914 16:49:08.060813  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service-monitor.yaml
+I0914 16:49:08.167629  547510 assets.go:49] Reading manifest from memory: thanos-querier/oauth-htpasswd-secret.yaml
+I0914 16:49:08.168462  547510 assets.go:49] Reading manifest from memory: alertmanager/trusted-ca-bundle.yaml
+I0914 16:49:08.169126  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/service-monitor.yaml
+I0914 16:49:08.217914  547510 assets.go:49] Reading manifest from memory: telemeter-client/deployment.yaml
+I0914 16:49:08.218724  547510 assets.go:49] Reading manifest from memory: node-exporter/prometheus-rule.yaml
+I0914 16:49:08.308906  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/kube-rbac-proxy-secret.yaml
+I0914 16:49:08.641797  547510 assets.go:49] Reading manifest from memory: thanos-querier/kube-rbac-proxy-secret.yaml
+I0914 16:49:08.666374  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service-monitor.yaml
+I0914 16:49:08.716741  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-account.yaml
+I0914 16:49:08.716763  547510 tasks.go:74] ran task 9 of 15: Updating openshift-state-metrics
+I0914 16:49:08.716816  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:49:09.094914  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/cluster-role.yaml
+I0914 16:49:09.119468  547510 assets.go:49] Reading manifest from memory: thanos-querier/kube-rbac-proxy-rules-secret.yaml
+I0914 16:49:09.132623  547510 assets.go:49] Reading manifest from memory: node-exporter/service-monitor.yaml
+I0914 16:49:09.242643  547510 tasks.go:74] ran task 8 of 15: Updating kube-state-metrics
+I0914 16:49:09.753066  547510 assets.go:49] Reading manifest from memory: thanos-querier/service-account.yaml
+I0914 16:49:11.604706  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/cluster-role-binding.yaml
+I0914 16:49:11.986936  547510 assets.go:49] Reading manifest from memory: thanos-querier/cluster-role.yaml
+I0914 16:49:12.019553  547510 tasks.go:74] ran task 7 of 15: Updating node-exporter
+I0914 16:49:12.019745  547510 tasks.go:74] ran task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:49:12.019836  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/alertmanager-role-binding.yaml
+I0914 16:49:12.020700  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/deployment.yaml
+I0914 16:49:12.164209  547510 assets.go:49] Reading manifest from memory: alertmanager/alertmanager.yaml
+I0914 16:49:12.178754  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-config.yaml
+I0914 16:49:13.304799  547510 assets.go:49] Reading manifest from memory: thanos-querier/cluster-role-binding.yaml
+I0914 16:49:13.589190  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:49:13.589553  547510 assets.go:49] Reading manifest from memory: telemeter-client/service-monitor.yaml
+I0914 16:49:13.768957  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-specific-namespaces.yaml
+I0914 16:49:13.952941  547510 tasks.go:74] ran task 11 of 15: Updating Telemeter client
+I0914 16:49:15.406190  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/pod-disruption-budget.yaml
+I0914 16:49:15.611263  547510 assets.go:49] Reading manifest from memory: thanos-querier/grpc-tls-secret.yaml
+I0914 16:49:16.225803  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service-monitor.yaml
+I0914 16:49:16.519179  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service.yaml
+I0914 16:49:16.519383  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/api-service.yaml
+I0914 16:49:16.519721  547510 assets.go:49] Reading manifest from memory: thanos-querier/trusted-ca-bundle.yaml
+I0914 16:49:17.047432  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-thanos-sidecar.yaml
+I0914 16:49:17.181709  547510 tasks.go:74] ran task 10 of 15: Updating prometheus-adapter
+I0914 16:49:17.297461  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-binding-config.yaml
+I0914 16:49:17.434616  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-binding-specific-namespaces.yaml
+I0914 16:49:17.452845  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-binding-specific-namespaces.yaml
+I0914 16:49:18.233592  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-specific-namespaces.yaml
+I0914 16:49:18.581437  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-config.yaml
+I0914 16:49:18.784003  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/cluster-role-binding.yaml
+I0914 16:49:18.784170  547510 assets.go:49] Reading manifest from memory: thanos-ruler/query-config-secret.yaml
+I0914 16:49:21.801779  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/cluster-role.yaml
+I0914 16:49:22.463489  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-account.yaml
+I0914 16:49:22.463536  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service-monitor.yaml
+I0914 16:49:22.463613  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-binding-config.yaml
+I0914 16:49:23.394287  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/serving-certs-ca-bundle.yaml
+I0914 16:49:23.394480  547510 assets.go:49] Reading manifest from memory: thanos-querier/deployment.yaml
+I0914 16:49:23.394548  547510 tasks.go:74] ran task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:49:23.536023  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus-rule.yaml
+I0914 16:49:23.700413  547510 tasks.go:74] ran task 5 of 15: Updating Prometheus-user-workload
+I0914 16:49:24.327475  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus-rule-thanos-sidecar.yaml
+I0914 16:49:24.733445  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service.yaml
+I0914 16:49:24.734618  547510 assets.go:49] Reading manifest from memory: alertmanager/prometheus-rule.yaml
+I0914 16:49:25.031638  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-thanos-sidecar.yaml
+I0914 16:49:25.032039  547510 assets.go:49] Reading manifest from memory: alertmanager/service-monitor.yaml
+I0914 16:49:25.340323  547510 assets.go:49] Reading manifest from memory: thanos-querier/pod-disruption-budget.yaml
+I0914 16:49:25.544578  547510 tasks.go:74] ran task 6 of 15: Updating Alertmanager
+I0914 16:49:25.544824  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/metrics-client-certs.yaml
+I0914 16:49:25.747190  547510 assets.go:49] Reading manifest from memory: thanos-querier/service-monitor.yaml
+I0914 16:49:26.032582  547510 assets.go:49] Reading manifest from memory: thanos-querier/prometheus-rule.yaml
+I0914 16:49:26.550949  547510 tasks.go:74] ran task 13 of 15: Updating Thanos Querier
+I0914 16:49:26.553389  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-sources.yaml
+I0914 16:49:26.771835  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:49:26.976333  547510 assets.go:49] Reading manifest from memory: grafana/service-account.yaml
+I0914 16:49:27.109435  547510 assets.go:49] Reading manifest from memory: grafana/service.yaml
+I0914 16:49:27.386119  547510 assets.go:49] Reading manifest from memory: grafana/trusted-ca-bundle.yaml
+I0914 16:49:27.931235  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/grpc-tls-secret.yaml
+I0914 16:49:30.555570  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/trusted-ca-bundle.yaml
+I0914 16:49:30.578665  547510 assets.go:49] Reading manifest from memory: grafana/deployment.yaml
+I0914 16:49:33.491875  547510 assets.go:49] Reading manifest from memory: grafana/service-monitor.yaml
+I0914 16:49:33.888190  547510 tasks.go:74] ran task 3 of 15: Updating Grafana
+I0914 16:49:33.921359  547510 prometheus.go:340] reconciling Prometheus additionalAlertmanagerConfigs secret
+I0914 16:49:34.180032  547510 prometheus.go:345] initializing Prometheus object
+I0914 16:49:34.180050  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus.yaml
+I0914 16:49:34.181246  547510 prometheus.go:351] reconciling Prometheus object
+I0914 16:49:34.467746  547510 prometheus.go:357] waiting for Prometheus object changes
+I0914 16:49:45.103315  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-monitor.yaml
+I0914 16:49:45.511255  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-monitor-thanos-sidecar.yaml
+I0914 16:49:46.749172  547510 tasks.go:74] ran task 4 of 15: Updating Prometheus-k8s
+I0914 16:49:46.749191  547510 operator.go:580] Updating ClusterOperator status to done.
+W0914 16:49:47.025939  547510 operator.go:683] No Cluster Monitoring ConfigMap was found. Using defaults.
+I0914 16:49:47.895580  547510 operator.go:556] Updating ClusterOperator status to in progress.
+I0914 16:49:48.275393  547510 tasks.go:47] processing task group 1 of 2
+I0914 16:49:48.275421  547510 tasks.go:68] running task 2 of 2: Updating Prometheus Operator
+I0914 16:49:48.275431  547510 assets.go:49] Reading manifest from memory: prometheus-operator/operator-certs-ca-bundle.yaml
+I0914 16:49:48.275461  547510 tasks.go:68] running task 1 of 2: Updating metrics scraping client CA
+I0914 16:49:48.416868  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service-account.yaml
+I0914 16:49:48.417509  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/metrics-client-ca.yaml
+I0914 16:49:48.583127  547510 assets.go:49] Reading manifest from memory: prometheus-operator/cluster-role.yaml
+I0914 16:49:48.789186  547510 tasks.go:74] ran task 1 of 2: Updating metrics scraping client CA
+I0914 16:49:48.992598  547510 assets.go:49] Reading manifest from memory: prometheus-operator/cluster-role-binding.yaml
+I0914 16:49:49.197254  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service.yaml
+I0914 16:49:49.640921  547510 assets.go:49] Reading manifest from memory: prometheus-operator/deployment.yaml
+I0914 16:49:54.890490  547510 operator.go:430] Triggering update due to an apiserver config update
+I0914 16:49:55.751155  547510 assets.go:49] Reading manifest from memory: prometheus-operator/prometheus-rule-validating-webhook.yaml
+I0914 16:49:56.092075  547510 assets.go:49] Reading manifest from memory: prometheus-operator/prometheus-rule.yaml
+I0914 16:49:56.467554  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service-monitor.yaml
+I0914 16:49:56.817385  547510 tasks.go:74] ran task 2 of 2: Updating Prometheus Operator
+I0914 16:49:56.817453  547510 tasks.go:47] processing task group 2 of 2
+I0914 16:49:56.817515  547510 tasks.go:68] running task 15 of 15: Updating Control Plane components
+I0914 16:49:56.817552  547510 tasks.go:68] running task 5 of 15: Updating Prometheus-user-workload
+I0914 16:49:56.817607  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-monitor-thanos-sidecar.yaml
+I0914 16:49:56.817606  547510 tasks.go:68] running task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:49:56.817641  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/service.yaml
+I0914 16:49:56.817676  547510 tasks.go:68] running task 3 of 15: Updating Grafana
+I0914 16:49:56.817730  547510 assets.go:49] Reading manifest from memory: grafana/cluster-role.yaml
+I0914 16:49:56.818123  547510 tasks.go:68] running task 6 of 15: Updating Alertmanager
+I0914 16:49:56.818293  547510 tasks.go:68] running task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:49:56.818360  547510 tasks.go:68] running task 8 of 15: Updating kube-state-metrics
+I0914 16:49:56.818330  547510 tasks.go:68] running task 7 of 15: Updating node-exporter
+I0914 16:49:56.818291  547510 tasks.go:68] running task 10 of 15: Updating prometheus-adapter
+I0914 16:49:56.818341  547510 assets.go:49] Reading manifest from memory: alertmanager/route.yaml
+I0914 16:49:56.818505  547510 tasks.go:68] running task 11 of 15: Updating Telemeter client
+I0914 16:49:56.818544  547510 tasks.go:68] running task 13 of 15: Updating Thanos Querier
+I0914 16:49:56.818463  547510 tasks.go:68] running task 12 of 15: Updating configuration sharing
+I0914 16:49:56.818577  547510 assets.go:49] Reading manifest from memory: telemeter-client/serving-certs-ca-bundle.yaml
+I0914 16:49:56.818599  547510 tasks.go:68] running task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:49:56.818638  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/route.yaml
+I0914 16:49:56.818130  547510 tasks.go:68] running task 4 of 15: Updating Prometheus-k8s
+I0914 16:49:56.818671  547510 assets.go:49] Reading manifest from memory: thanos-ruler/thanos-ruler-prometheus-rule.yaml
+I0914 16:49:56.818718  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/serving-certs-ca-bundle.yaml
+I0914 16:49:56.819112  547510 assets.go:49] Reading manifest from memory: thanos-querier/service.yaml
+I0914 16:49:56.818463  547510 tasks.go:68] running task 9 of 15: Updating openshift-state-metrics
+I0914 16:49:56.819551  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/deployment.yaml
+I0914 16:49:56.819791  547510 assets.go:49] Reading manifest from memory: node-exporter/security-context-constraints.yaml
+I0914 16:49:56.819989  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role.yaml
+I0914 16:49:56.820949  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service-account.yaml
+I0914 16:49:56.821192  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service-account.yaml
+I0914 16:49:56.950478  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-monitor.yaml
+I0914 16:49:56.950605  547510 assets.go:49] Reading manifest from memory: control-plane/prometheus-rule.yaml
+I0914 16:49:56.956608  547510 assets.go:49] Reading manifest from memory: alertmanager/route.yaml
+I0914 16:49:56.956665  547510 assets.go:49] Reading manifest from memory: telemeter-client/service-account.yaml
+I0914 16:49:57.185613  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service-monitor.yaml
+I0914 16:49:57.185679  547510 assets.go:49] Reading manifest from memory: thanos-ruler/route.yaml
+I0914 16:49:57.185704  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/cluster-role.yaml
+I0914 16:49:57.185829  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/kubelet-serving-ca-bundle.yaml
+I0914 16:49:57.185853  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/cluster-role.yaml
+I0914 16:49:57.185877  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role.yaml
+I0914 16:49:57.186091  547510 assets.go:49] Reading manifest from memory: grafana/route.yaml
+I0914 16:49:57.186137  547510 assets.go:49] Reading manifest from memory: grafana/cluster-role-binding.yaml
+I0914 16:49:57.186263  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-server-resources.yaml
+I0914 16:49:57.186459  547510 assets.go:49] Reading manifest from memory: node-exporter/service-account.yaml
+I0914 16:49:57.186568  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-rules-edit-cluster-role.yaml
+I0914 16:49:57.319790  547510 assets.go:49] Reading manifest from memory: node-exporter/cluster-role.yaml
+I0914 16:49:57.319837  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service.yaml
+I0914 16:49:57.320025  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:49:57.326194  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service.yaml
+I0914 16:49:57.326212  547510 assets.go:49] Reading manifest from memory: grafana/route.yaml
+I0914 16:49:57.326304  547510 assets.go:49] Reading manifest from memory: thanos-querier/route.yaml
+I0914 16:49:57.326430  547510 assets.go:49] Reading manifest from memory: thanos-querier/route.yaml
+I0914 16:49:57.592419  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/cluster-role-binding.yaml
+I0914 16:49:57.592464  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-aggregated-metrics-reader.yaml
+I0914 16:49:57.592478  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/cluster-role-binding.yaml
+I0914 16:49:57.592489  547510 assets.go:49] Reading manifest from memory: thanos-ruler/cluster-role.yaml
+I0914 16:49:57.592638  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/cluster-role-binding.yaml
+I0914 16:49:57.598620  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-rules-view-cluster-role.yaml
+I0914 16:49:57.598667  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/route.yaml
+I0914 16:49:57.598702  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role-binding.yaml
+I0914 16:49:57.659455  547510 assets.go:49] Reading manifest from memory: control-plane/service-monitor-kubelet.yaml
+I0914 16:49:57.738753  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service.yaml
+I0914 16:49:57.738935  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role-binding-view.yaml
+I0914 16:49:57.738973  547510 assets.go:49] Reading manifest from memory: thanos-ruler/cluster-role-binding.yaml
+I0914 16:49:57.739175  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/alertmanager-role-binding.yaml
+I0914 16:49:57.739314  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service.yaml
+I0914 16:49:57.739518  547510 assets.go:49] Reading manifest from memory: node-exporter/cluster-role-binding.yaml
+I0914 16:49:57.866620  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-edit-cluster-role.yaml
+I0914 16:49:57.866645  547510 assets.go:49] Reading manifest from memory: telemeter-client/service.yaml
+I0914 16:49:57.866619  547510 tasks.go:74] ran task 12 of 15: Updating configuration sharing
+I0914 16:49:57.873194  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service-account.yaml
+I0914 16:49:57.873305  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding.yaml
+I0914 16:49:57.873321  547510 assets.go:49] Reading manifest from memory: node-exporter/service.yaml
+I0914 16:49:57.880045  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/cluster-role.yaml
+I0914 16:49:57.934153  547510 assets.go:49] Reading manifest from memory: control-plane/service-monitor-etcd.yaml
+I0914 16:49:58.001130  547510 assets.go:49] Reading manifest from memory: thanos-ruler/alertmanager-role-binding.yaml
+I0914 16:49:58.007039  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding-delegator.yaml
+I0914 16:49:58.007364  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/deployment.yaml
+I0914 16:49:58.013455  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service-account.yaml
+I0914 16:49:58.013685  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/deployment.yaml
+I0914 16:49:58.090417  547510 assets.go:49] Reading manifest from memory: alertmanager/secret.yaml
+I0914 16:49:58.138428  547510 assets.go:49] Reading manifest from memory: thanos-ruler/oauth-cookie-secret.yaml
+I0914 16:49:58.138442  547510 assets.go:49] Reading manifest from memory: telemeter-client/secret.yaml
+I0914 16:49:58.138571  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/cluster-role-view.yaml
+I0914 16:49:58.145606  547510 tasks.go:74] ran task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:49:58.145629  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding-view.yaml
+I0914 16:49:58.145706  547510 assets.go:49] Reading manifest from memory: node-exporter/daemonset.yaml
+I0914 16:49:58.216175  547510 assets.go:49] Reading manifest from memory: alertmanager/kube-rbac-proxy-secret.yaml
+I0914 16:49:58.272711  547510 assets.go:49] Reading manifest from memory: thanos-ruler/trusted-ca-bundle.yaml
+I0914 16:49:58.281188  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/role-binding-auth-reader.yaml
+I0914 16:49:58.353390  547510 assets.go:49] Reading manifest from memory: alertmanager/cluster-role.yaml
+I0914 16:49:58.405559  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/user-workload-config-edit-role.yaml
+I0914 16:49:58.405791  547510 assets.go:49] Reading manifest from memory: telemeter-client/trusted-ca-bundle.yaml
+I0914 16:49:58.413130  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service-account.yaml
+I0914 16:49:58.449777  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/grpc-tls-secret.yaml
+I0914 16:49:58.450256  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/prometheus.yaml
+I0914 16:49:58.550839  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:49:58.555599  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/config-map.yaml
+I0914 16:49:58.648076  547510 assets.go:49] Reading manifest from memory: alertmanager/cluster-role-binding.yaml
+I0914 16:49:58.699595  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-alertmanager-edit-role.yaml
+I0914 16:49:58.768691  547510 assets.go:49] Reading manifest from memory: grafana/proxy-secret.yaml
+I0914 16:49:58.775822  547510 assets.go:49] Reading manifest from memory: alertmanager/service-account.yaml
+I0914 16:49:58.775900  547510 assets.go:49] Reading manifest from memory: thanos-querier/oauth-cookie-secret.yaml
+I0914 16:49:58.776077  547510 tasks.go:74] ran task 15 of 15: Updating Control Plane components
+I0914 16:49:58.831912  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/configmap-prometheus.yaml
+I0914 16:49:58.909007  547510 assets.go:49] Reading manifest from memory: grafana/config.yaml
+I0914 16:49:58.909149  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/proxy-secret.yaml
+I0914 16:49:58.966901  547510 assets.go:49] Reading manifest from memory: alertmanager/proxy-secret.yaml
+I0914 16:49:58.973147  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/prometheus-rule.yaml
+I0914 16:49:58.973288  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:49:59.045755  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:49:59.804087  547510 assets.go:49] Reading manifest from memory: alertmanager/service.yaml
+I0914 16:49:59.936591  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service.yaml
+I0914 16:49:59.942864  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/prometheus-rule.yaml
+I0914 16:49:59.943573  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:49:59.943675  547510 assets.go:49] Reading manifest from memory: thanos-ruler/grpc-tls-secret.yaml
+I0914 16:49:59.943762  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service-monitor.yaml
+I0914 16:49:59.943773  547510 assets.go:49] Reading manifest from memory: thanos-ruler/alertmanagers-config-secret.yaml
+I0914 16:49:59.943876  547510 assets.go:49] Reading manifest from memory: thanos-ruler/thanos-ruler.yaml
+I0914 16:50:00.088013  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-definitions.yaml
+I0914 16:50:00.092110  547510 assets.go:49] Reading manifest from memory: alertmanager/trusted-ca-bundle.yaml
+I0914 16:50:00.094168  547510 assets.go:49] Reading manifest from memory: node-exporter/prometheus-rule.yaml
+I0914 16:50:00.098019  547510 assets.go:49] Reading manifest from memory: telemeter-client/deployment.yaml
+I0914 16:50:00.110996  547510 assets.go:49] Reading manifest from memory: thanos-querier/oauth-htpasswd-secret.yaml
+I0914 16:50:00.121937  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/service-monitor.yaml
+I0914 16:50:00.178464  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/htpasswd-secret.yaml
+I0914 16:50:00.222737  547510 tasks.go:74] ran task 9 of 15: Updating openshift-state-metrics
+I0914 16:50:00.235812  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service-monitor.yaml
+I0914 16:50:00.381393  547510 assets.go:49] Reading manifest from memory: thanos-querier/kube-rbac-proxy-secret.yaml
+I0914 16:50:00.439615  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:50:00.461694  547510 assets.go:49] Reading manifest from memory: node-exporter/service-monitor.yaml
+I0914 16:50:00.485949  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/kube-rbac-proxy-secret.yaml
+I0914 16:50:00.620706  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-account.yaml
+I0914 16:50:00.621468  547510 assets.go:49] Reading manifest from memory: thanos-querier/kube-rbac-proxy-rules-secret.yaml
+I0914 16:50:00.626997  547510 tasks.go:74] ran task 8 of 15: Updating kube-state-metrics
+I0914 16:50:00.766766  547510 assets.go:49] Reading manifest from memory: thanos-querier/service-account.yaml
+I0914 16:50:00.771303  547510 tasks.go:74] ran task 7 of 15: Updating node-exporter
+I0914 16:50:00.771349  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/cluster-role.yaml
+I0914 16:50:01.630450  547510 assets.go:49] Reading manifest from memory: thanos-querier/cluster-role.yaml
+I0914 16:50:01.638442  547510 tasks.go:74] ran task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:50:01.681835  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/deployment.yaml
+I0914 16:50:01.692774  547510 assets.go:49] Reading manifest from memory: alertmanager/alertmanager.yaml
+I0914 16:50:01.770680  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/cluster-role-binding.yaml
+I0914 16:50:01.907603  547510 assets.go:49] Reading manifest from memory: thanos-querier/cluster-role-binding.yaml
+I0914 16:50:01.907745  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/alertmanager-role-binding.yaml
+I0914 16:50:02.213241  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-config.yaml
+I0914 16:50:02.213393  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:50:02.226263  547510 assets.go:49] Reading manifest from memory: telemeter-client/service-monitor.yaml
+I0914 16:50:02.484134  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-specific-namespaces.yaml
+I0914 16:50:02.504546  547510 tasks.go:74] ran task 11 of 15: Updating Telemeter client
+I0914 16:50:03.354830  547510 assets.go:49] Reading manifest from memory: thanos-querier/grpc-tls-secret.yaml
+I0914 16:50:03.355004  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/pod-disruption-budget.yaml
+I0914 16:50:03.844565  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service-monitor.yaml
+I0914 16:50:03.975734  547510 assets.go:49] Reading manifest from memory: thanos-querier/trusted-ca-bundle.yaml
+I0914 16:50:04.123985  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/api-service.yaml
+I0914 16:50:04.766698  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-binding-specific-namespaces.yaml
+I0914 16:50:04.766870  547510 tasks.go:74] ran task 10 of 15: Updating prometheus-adapter
+I0914 16:50:10.092544  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service.yaml
+I0914 16:50:10.624968  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-thanos-sidecar.yaml
+I0914 16:50:10.625661  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-binding-config.yaml
+I0914 16:50:10.630741  547510 assets.go:49] Reading manifest from memory: thanos-querier/deployment.yaml
+I0914 16:50:10.753292  547510 assets.go:49] Reading manifest from memory: thanos-ruler/query-config-secret.yaml
+I0914 16:50:10.765936  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-binding-config.yaml
+I0914 16:50:10.901476  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-binding-specific-namespaces.yaml
+I0914 16:50:11.019118  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus-rule.yaml
+I0914 16:50:11.931089  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-specific-namespaces.yaml
+I0914 16:50:11.931158  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service-monitor.yaml
+I0914 16:50:12.266412  547510 tasks.go:74] ran task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:50:12.266412  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-config.yaml
+I0914 16:50:12.444416  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/cluster-role-binding.yaml
+I0914 16:50:12.447036  547510 assets.go:49] Reading manifest from memory: thanos-querier/pod-disruption-budget.yaml
+I0914 16:50:12.447595  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus-rule-thanos-sidecar.yaml
+I0914 16:50:12.580482  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/cluster-role.yaml
+I0914 16:50:13.262670  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-account.yaml
+I0914 16:50:13.262951  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service.yaml
+I0914 16:50:13.263196  547510 assets.go:49] Reading manifest from memory: thanos-querier/service-monitor.yaml
+I0914 16:50:13.263335  547510 assets.go:49] Reading manifest from memory: alertmanager/prometheus-rule.yaml
+I0914 16:50:13.457127  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/serving-certs-ca-bundle.yaml
+I0914 16:50:13.596606  547510 assets.go:49] Reading manifest from memory: thanos-querier/prometheus-rule.yaml
+I0914 16:50:13.596767  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-thanos-sidecar.yaml
+I0914 16:50:13.607636  547510 assets.go:49] Reading manifest from memory: alertmanager/service-monitor.yaml
+I0914 16:50:13.984430  547510 tasks.go:74] ran task 5 of 15: Updating Prometheus-user-workload
+I0914 16:50:14.121348  547510 tasks.go:74] ran task 6 of 15: Updating Alertmanager
+I0914 16:50:14.121367  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/metrics-client-certs.yaml
+I0914 16:50:14.134650  547510 tasks.go:74] ran task 13 of 15: Updating Thanos Querier
+I0914 16:50:14.765488  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-sources.yaml
+I0914 16:50:15.105489  547510 assets.go:49] Reading manifest from memory: grafana/service-account.yaml
+I0914 16:50:15.309345  547510 assets.go:49] Reading manifest from memory: grafana/service.yaml
+I0914 16:50:15.309490  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:50:15.719297  547510 assets.go:49] Reading manifest from memory: grafana/trusted-ca-bundle.yaml
+I0914 16:50:16.646695  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/grpc-tls-secret.yaml
+I0914 16:50:19.482357  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/trusted-ca-bundle.yaml
+I0914 16:50:19.717215  547510 assets.go:49] Reading manifest from memory: grafana/deployment.yaml
+I0914 16:50:23.196482  547510 assets.go:49] Reading manifest from memory: grafana/service-monitor.yaml
+I0914 16:50:23.705855  547510 tasks.go:74] ran task 3 of 15: Updating Grafana
+I0914 16:50:23.711739  547510 prometheus.go:340] reconciling Prometheus additionalAlertmanagerConfigs secret
+I0914 16:50:24.044365  547510 prometheus.go:345] initializing Prometheus object
+I0914 16:50:24.044453  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus.yaml
+I0914 16:50:24.052001  547510 prometheus.go:351] reconciling Prometheus object
+I0914 16:50:24.370458  547510 prometheus.go:357] waiting for Prometheus object changes
+I0914 16:50:35.077042  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-monitor.yaml
+I0914 16:50:35.429726  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-monitor-thanos-sidecar.yaml
+I0914 16:50:36.916473  547510 tasks.go:74] ran task 4 of 15: Updating Prometheus-k8s
+I0914 16:50:36.916569  547510 operator.go:580] Updating ClusterOperator status to done.
+W0914 16:50:37.325961  547510 operator.go:683] No Cluster Monitoring ConfigMap was found. Using defaults.
+I0914 16:50:38.314897  547510 operator.go:556] Updating ClusterOperator status to in progress.
+I0914 16:50:38.696785  547510 tasks.go:47] processing task group 1 of 2
+I0914 16:50:38.696893  547510 tasks.go:68] running task 2 of 2: Updating Prometheus Operator
+I0914 16:50:38.696930  547510 assets.go:49] Reading manifest from memory: prometheus-operator/operator-certs-ca-bundle.yaml
+I0914 16:50:38.697036  547510 tasks.go:68] running task 1 of 2: Updating metrics scraping client CA
+I0914 16:50:38.826822  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/metrics-client-ca.yaml
+I0914 16:50:38.833596  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service-account.yaml
+I0914 16:50:38.987592  547510 assets.go:49] Reading manifest from memory: prometheus-operator/cluster-role.yaml
+I0914 16:50:39.133887  547510 tasks.go:74] ran task 1 of 2: Updating metrics scraping client CA
+I0914 16:50:39.275983  547510 assets.go:49] Reading manifest from memory: prometheus-operator/cluster-role-binding.yaml
+I0914 16:50:39.476605  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service.yaml
+I0914 16:50:39.933033  547510 assets.go:49] Reading manifest from memory: prometheus-operator/deployment.yaml
+I0914 16:50:46.236088  547510 assets.go:49] Reading manifest from memory: prometheus-operator/prometheus-rule-validating-webhook.yaml
+I0914 16:50:46.643879  547510 assets.go:49] Reading manifest from memory: prometheus-operator/prometheus-rule.yaml
+I0914 16:50:46.946819  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service-monitor.yaml
+I0914 16:50:47.310511  547510 tasks.go:74] ran task 2 of 2: Updating Prometheus Operator
+I0914 16:50:47.310574  547510 tasks.go:47] processing task group 2 of 2
+I0914 16:50:47.310620  547510 tasks.go:68] running task 15 of 15: Updating Control Plane components
+I0914 16:50:47.310653  547510 tasks.go:68] running task 7 of 15: Updating node-exporter
+I0914 16:50:47.310673  547510 tasks.go:68] running task 11 of 15: Updating Telemeter client
+I0914 16:50:47.310683  547510 assets.go:49] Reading manifest from memory: node-exporter/security-context-constraints.yaml
+I0914 16:50:47.310703  547510 assets.go:49] Reading manifest from memory: telemeter-client/serving-certs-ca-bundle.yaml
+I0914 16:50:47.310733  547510 tasks.go:68] running task 5 of 15: Updating Prometheus-user-workload
+I0914 16:50:47.310765  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-monitor-thanos-sidecar.yaml
+I0914 16:50:47.310855  547510 tasks.go:68] running task 3 of 15: Updating Grafana
+I0914 16:50:47.310880  547510 assets.go:49] Reading manifest from memory: grafana/cluster-role.yaml
+I0914 16:50:47.310956  547510 tasks.go:68] running task 12 of 15: Updating configuration sharing
+I0914 16:50:47.310978  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/route.yaml
+I0914 16:50:47.311276  547510 tasks.go:68] running task 8 of 15: Updating kube-state-metrics
+I0914 16:50:47.311321  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service-account.yaml
+I0914 16:50:47.311460  547510 tasks.go:68] running task 6 of 15: Updating Alertmanager
+I0914 16:50:47.311493  547510 assets.go:49] Reading manifest from memory: alertmanager/route.yaml
+I0914 16:50:47.311522  547510 tasks.go:68] running task 13 of 15: Updating Thanos Querier
+I0914 16:50:47.311563  547510 assets.go:49] Reading manifest from memory: thanos-querier/service.yaml
+I0914 16:50:47.311787  547510 tasks.go:68] running task 9 of 15: Updating openshift-state-metrics
+I0914 16:50:47.311820  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service-account.yaml
+I0914 16:50:47.312057  547510 tasks.go:68] running task 4 of 15: Updating Prometheus-k8s
+I0914 16:50:47.312095  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/serving-certs-ca-bundle.yaml
+I0914 16:50:47.312106  547510 tasks.go:68] running task 10 of 15: Updating prometheus-adapter
+I0914 16:50:47.312129  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role.yaml
+I0914 16:50:47.312181  547510 tasks.go:68] running task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:50:47.312204  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/deployment.yaml
+I0914 16:50:47.312372  547510 tasks.go:68] running task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:50:47.312401  547510 assets.go:49] Reading manifest from memory: thanos-ruler/thanos-ruler-prometheus-rule.yaml
+I0914 16:50:47.312590  547510 tasks.go:68] running task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:50:47.312622  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/service.yaml
+I0914 16:50:47.465438  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-monitor.yaml
+I0914 16:50:47.465739  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/cluster-role.yaml
+I0914 16:50:47.465812  547510 assets.go:49] Reading manifest from memory: control-plane/prometheus-rule.yaml
+I0914 16:50:47.465921  547510 assets.go:49] Reading manifest from memory: telemeter-client/service-account.yaml
+I0914 16:50:47.466983  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/cluster-role.yaml
+I0914 16:50:47.473478  547510 assets.go:49] Reading manifest from memory: alertmanager/route.yaml
+I0914 16:50:47.584852  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service-monitor.yaml
+I0914 16:50:47.584990  547510 assets.go:49] Reading manifest from memory: thanos-ruler/route.yaml
+I0914 16:50:47.649192  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-server-resources.yaml
+I0914 16:50:47.649374  547510 assets.go:49] Reading manifest from memory: node-exporter/service-account.yaml
+I0914 16:50:47.649484  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/kubelet-serving-ca-bundle.yaml
+I0914 16:50:47.649565  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role.yaml
+I0914 16:50:47.649615  547510 assets.go:49] Reading manifest from memory: thanos-querier/route.yaml
+I0914 16:50:47.657111  547510 assets.go:49] Reading manifest from memory: grafana/route.yaml
+I0914 16:50:47.675929  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/cluster-role-view.yaml
+I0914 16:50:47.738156  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service.yaml
+I0914 16:50:47.792393  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:50:47.792817  547510 assets.go:49] Reading manifest from memory: grafana/cluster-role-binding.yaml
+I0914 16:50:47.800004  547510 assets.go:49] Reading manifest from memory: node-exporter/cluster-role.yaml
+I0914 16:50:47.800928  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/cluster-role-binding.yaml
+I0914 16:50:47.815666  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service.yaml
+I0914 16:50:47.815706  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/cluster-role-binding.yaml
+I0914 16:50:47.815721  547510 assets.go:49] Reading manifest from memory: thanos-querier/route.yaml
+I0914 16:50:48.386096  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/cluster-role-binding.yaml
+I0914 16:50:48.386265  547510 assets.go:49] Reading manifest from memory: grafana/route.yaml
+I0914 16:50:48.386397  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-aggregated-metrics-reader.yaml
+I0914 16:50:48.386447  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-rules-edit-cluster-role.yaml
+I0914 16:50:48.386577  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role-binding.yaml
+I0914 16:50:48.386688  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/route.yaml
+I0914 16:50:48.386781  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service.yaml
+I0914 16:50:48.386859  547510 assets.go:49] Reading manifest from memory: thanos-ruler/cluster-role.yaml
+I0914 16:50:48.387088  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service.yaml
+I0914 16:50:48.387297  547510 assets.go:49] Reading manifest from memory: control-plane/service-monitor-kubelet.yaml
+I0914 16:50:48.521933  547510 assets.go:49] Reading manifest from memory: thanos-ruler/cluster-role-binding.yaml
+I0914 16:50:48.522204  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role-binding-view.yaml
+I0914 16:50:48.522532  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/alertmanager-role-binding.yaml
+I0914 16:50:48.522922  547510 assets.go:49] Reading manifest from memory: node-exporter/cluster-role-binding.yaml
+I0914 16:50:48.611744  547510 assets.go:49] Reading manifest from memory: alertmanager/secret.yaml
+I0914 16:50:48.645190  547510 tasks.go:74] ran task 12 of 15: Updating configuration sharing
+I0914 16:50:48.653163  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-rules-view-cluster-role.yaml
+I0914 16:50:48.653406  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding.yaml
+I0914 16:50:48.738881  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/cluster-role.yaml
+I0914 16:50:48.747388  547510 assets.go:49] Reading manifest from memory: telemeter-client/service.yaml
+I0914 16:50:48.747543  547510 assets.go:49] Reading manifest from memory: node-exporter/service.yaml
+I0914 16:50:48.747726  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/deployment.yaml
+I0914 16:50:48.768925  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service-account.yaml
+I0914 16:50:48.769097  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/deployment.yaml
+I0914 16:50:49.029744  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding-delegator.yaml
+I0914 16:50:49.029823  547510 assets.go:49] Reading manifest from memory: alertmanager/kube-rbac-proxy-secret.yaml
+I0914 16:50:49.030178  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service-account.yaml
+I0914 16:50:49.036173  547510 assets.go:49] Reading manifest from memory: thanos-ruler/alertmanager-role-binding.yaml
+I0914 16:50:49.036897  547510 assets.go:49] Reading manifest from memory: thanos-querier/oauth-cookie-secret.yaml
+I0914 16:50:49.042714  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/grpc-tls-secret.yaml
+I0914 16:50:49.042785  547510 assets.go:49] Reading manifest from memory: control-plane/service-monitor-etcd.yaml
+I0914 16:50:49.043110  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/prometheus.yaml
+I0914 16:50:49.204437  547510 tasks.go:74] ran task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:50:49.204512  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding-view.yaml
+I0914 16:50:49.204594  547510 assets.go:49] Reading manifest from memory: telemeter-client/secret.yaml
+I0914 16:50:49.204670  547510 assets.go:49] Reading manifest from memory: alertmanager/cluster-role.yaml
+I0914 16:50:49.409654  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-edit-cluster-role.yaml
+I0914 16:50:49.409784  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:50:49.409819  547510 assets.go:49] Reading manifest from memory: node-exporter/daemonset.yaml
+I0914 16:50:49.410053  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/role-binding-auth-reader.yaml
+I0914 16:50:49.410062  547510 assets.go:49] Reading manifest from memory: thanos-ruler/oauth-cookie-secret.yaml
+I0914 16:50:49.543658  547510 assets.go:49] Reading manifest from memory: thanos-ruler/trusted-ca-bundle.yaml
+I0914 16:50:49.550986  547510 assets.go:49] Reading manifest from memory: telemeter-client/trusted-ca-bundle.yaml
+I0914 16:50:49.551364  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service-account.yaml
+I0914 16:50:49.551652  547510 assets.go:49] Reading manifest from memory: alertmanager/cluster-role-binding.yaml
+I0914 16:50:49.668693  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/proxy-secret.yaml
+I0914 16:50:49.668850  547510 assets.go:49] Reading manifest from memory: grafana/proxy-secret.yaml
+I0914 16:50:49.684721  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/user-workload-config-edit-role.yaml
+I0914 16:50:49.797776  547510 assets.go:49] Reading manifest from memory: alertmanager/service-account.yaml
+I0914 16:50:49.797916  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/config-map.yaml
+I0914 16:50:49.805032  547510 assets.go:49] Reading manifest from memory: grafana/config.yaml
+I0914 16:50:49.805212  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:50:49.812427  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:50:49.924508  547510 assets.go:49] Reading manifest from memory: alertmanager/proxy-secret.yaml
+I0914 16:50:49.942199  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-alertmanager-edit-role.yaml
+I0914 16:50:50.054611  547510 assets.go:49] Reading manifest from memory: alertmanager/service.yaml
+I0914 16:50:50.071748  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/configmap-prometheus.yaml
+I0914 16:50:50.186062  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:50:50.201463  547510 tasks.go:74] ran task 15 of 15: Updating Control Plane components
+I0914 16:50:50.317809  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-definitions.yaml
+I0914 16:50:50.331289  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service.yaml
+I0914 16:50:50.337378  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/prometheus-rule.yaml
+I0914 16:50:50.346316  547510 assets.go:49] Reading manifest from memory: alertmanager/trusted-ca-bundle.yaml
+I0914 16:50:54.632902  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/htpasswd-secret.yaml
+I0914 16:50:54.761856  547510 assets.go:49] Reading manifest from memory: thanos-querier/oauth-htpasswd-secret.yaml
+I0914 16:50:54.761874  547510 assets.go:49] Reading manifest from memory: thanos-ruler/grpc-tls-secret.yaml
+I0914 16:50:54.761951  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/prometheus-rule.yaml
+I0914 16:50:54.761989  547510 assets.go:49] Reading manifest from memory: thanos-ruler/alertmanagers-config-secret.yaml
+I0914 16:50:54.762374  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service-monitor.yaml
+I0914 16:50:54.762448  547510 assets.go:49] Reading manifest from memory: thanos-ruler/thanos-ruler.yaml
+I0914 16:50:55.171220  547510 assets.go:49] Reading manifest from memory: node-exporter/prometheus-rule.yaml
+I0914 16:50:56.476487  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/kube-rbac-proxy-secret.yaml
+I0914 16:50:56.476573  547510 assets.go:49] Reading manifest from memory: thanos-querier/kube-rbac-proxy-secret.yaml
+I0914 16:50:56.682847  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service-monitor.yaml
+I0914 16:50:56.684954  547510 assets.go:49] Reading manifest from memory: telemeter-client/deployment.yaml
+I0914 16:50:56.685104  547510 tasks.go:74] ran task 9 of 15: Updating openshift-state-metrics
+I0914 16:50:56.886632  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-account.yaml
+I0914 16:50:56.886964  547510 assets.go:49] Reading manifest from memory: thanos-querier/kube-rbac-proxy-rules-secret.yaml
+I0914 16:50:56.888353  547510 assets.go:49] Reading manifest from memory: node-exporter/service-monitor.yaml
+I0914 16:50:56.888783  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/service-monitor.yaml
+I0914 16:50:57.610515  547510 assets.go:49] Reading manifest from memory: thanos-querier/service-account.yaml
+I0914 16:50:57.610673  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/cluster-role.yaml
+I0914 16:50:57.616259  547510 tasks.go:74] ran task 8 of 15: Updating kube-state-metrics
+I0914 16:50:57.743677  547510 assets.go:49] Reading manifest from memory: thanos-querier/cluster-role.yaml
+I0914 16:50:57.762352  547510 tasks.go:74] ran task 7 of 15: Updating node-exporter
+I0914 16:50:57.909785  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:50:58.036291  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/cluster-role-binding.yaml
+I0914 16:51:00.876200  547510 assets.go:49] Reading manifest from memory: thanos-querier/cluster-role-binding.yaml
+I0914 16:51:01.123377  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/alertmanager-role-binding.yaml
+I0914 16:51:01.124966  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/deployment.yaml
+I0914 16:51:01.129344  547510 assets.go:49] Reading manifest from memory: alertmanager/alertmanager.yaml
+I0914 16:51:01.129515  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:51:01.259289  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-config.yaml
+I0914 16:51:01.267576  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service.yaml
+I0914 16:51:01.402094  547510 tasks.go:74] ran task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:51:01.594721  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-thanos-sidecar.yaml
+I0914 16:51:03.269362  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-binding-config.yaml
+I0914 16:51:03.276461  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-specific-namespaces.yaml
+I0914 16:51:03.276501  547510 assets.go:49] Reading manifest from memory: thanos-querier/grpc-tls-secret.yaml
+I0914 16:51:03.276564  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/pod-disruption-budget.yaml
+I0914 16:51:03.523054  547510 assets.go:49] Reading manifest from memory: telemeter-client/service-monitor.yaml
+I0914 16:51:03.527409  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-binding-specific-namespaces.yaml
+I0914 16:51:03.787062  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-specific-namespaces.yaml
+I0914 16:51:03.787709  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service-monitor.yaml
+I0914 16:51:03.801814  547510 tasks.go:74] ran task 11 of 15: Updating Telemeter client
+I0914 16:51:03.809543  547510 assets.go:49] Reading manifest from memory: thanos-querier/trusted-ca-bundle.yaml
+I0914 16:51:03.936435  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-config.yaml
+I0914 16:51:04.442434  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/cluster-role-binding.yaml
+I0914 16:51:04.443339  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/api-service.yaml
+I0914 16:51:04.575394  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/cluster-role.yaml
+I0914 16:51:04.742215  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-account.yaml
+I0914 16:51:04.880247  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/serving-certs-ca-bundle.yaml
+I0914 16:51:04.880527  547510 tasks.go:74] ran task 10 of 15: Updating prometheus-adapter
+I0914 16:51:06.032800  547510 assets.go:49] Reading manifest from memory: thanos-ruler/query-config-secret.yaml
+I0914 16:51:06.032870  547510 tasks.go:74] ran task 5 of 15: Updating Prometheus-user-workload
+I0914 16:51:06.167830  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-binding-specific-namespaces.yaml
+I0914 16:51:08.304286  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service-monitor.yaml
+I0914 16:51:08.323994  547510 assets.go:49] Reading manifest from memory: thanos-querier/deployment.yaml
+I0914 16:51:08.440922  547510 tasks.go:74] ran task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:51:09.686038  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-binding-config.yaml
+I0914 16:51:09.881901  547510 assets.go:49] Reading manifest from memory: thanos-querier/pod-disruption-budget.yaml
+I0914 16:51:09.951075  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus-rule.yaml
+I0914 16:51:10.885578  547510 assets.go:49] Reading manifest from memory: thanos-querier/service-monitor.yaml
+I0914 16:51:11.121489  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus-rule-thanos-sidecar.yaml
+I0914 16:51:11.257373  547510 assets.go:49] Reading manifest from memory: thanos-querier/prometheus-rule.yaml
+I0914 16:51:11.655504  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service.yaml
+I0914 16:51:11.718042  547510 tasks.go:74] ran task 13 of 15: Updating Thanos Querier
+I0914 16:51:12.144071  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-thanos-sidecar.yaml
+I0914 16:51:12.551935  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/metrics-client-certs.yaml
+I0914 16:51:13.581842  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-sources.yaml
+I0914 16:51:13.691980  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:51:13.855477  547510 assets.go:49] Reading manifest from memory: grafana/service-account.yaml
+I0914 16:51:13.949249  547510 assets.go:49] Reading manifest from memory: alertmanager/prometheus-rule.yaml
+I0914 16:51:14.002957  547510 assets.go:49] Reading manifest from memory: grafana/service.yaml
+I0914 16:51:14.238068  547510 assets.go:49] Reading manifest from memory: alertmanager/service-monitor.yaml
+I0914 16:51:14.274025  547510 assets.go:49] Reading manifest from memory: grafana/trusted-ca-bundle.yaml
+I0914 16:51:14.527840  547510 tasks.go:74] ran task 6 of 15: Updating Alertmanager
+I0914 16:51:15.013410  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/grpc-tls-secret.yaml
+I0914 16:51:17.262757  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/trusted-ca-bundle.yaml
+I0914 16:51:17.471851  547510 assets.go:49] Reading manifest from memory: grafana/deployment.yaml
+I0914 16:51:19.637560  547510 assets.go:49] Reading manifest from memory: grafana/service-monitor.yaml
+I0914 16:51:20.129602  547510 tasks.go:74] ran task 3 of 15: Updating Grafana
+I0914 16:51:20.129616  547510 prometheus.go:340] reconciling Prometheus additionalAlertmanagerConfigs secret
+I0914 16:51:20.491091  547510 prometheus.go:345] initializing Prometheus object
+I0914 16:51:20.491176  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus.yaml
+I0914 16:51:20.496251  547510 prometheus.go:351] reconciling Prometheus object
+I0914 16:51:20.847690  547510 prometheus.go:357] waiting for Prometheus object changes
+I0914 16:51:31.531811  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-monitor.yaml
+I0914 16:51:31.905792  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-monitor-thanos-sidecar.yaml
+I0914 16:51:33.133971  547510 tasks.go:74] ran task 4 of 15: Updating Prometheus-k8s
+I0914 16:51:33.134014  547510 operator.go:580] Updating ClusterOperator status to done.
+I0914 16:51:45.352450  547510 operator.go:404] ConfigMap to configure stack does not exist. Reconciling with default config every 15m0s.
+W0914 16:51:45.352509  547510 operator.go:683] No Cluster Monitoring ConfigMap was found. Using defaults.
+I0914 16:51:45.485583  547510 cert_controller.go:189] Client certificate for OpenShiftMonitoringClientCertRequester: time total=23h53m49s, remaining=22h36m19.514444929s, remaining/total=0.9459544391417893
+I0914 16:51:45.485660  547510 cert_controller.go:193] Client certificate for OpenShiftMonitoringClientCertRequester is valid and has more than 23.76% of its life remaining
+I0914 16:51:46.241935  547510 operator.go:556] Updating ClusterOperator status to in progress.
+I0914 16:51:46.534794  547510 tasks.go:47] processing task group 1 of 2
+I0914 16:51:46.534907  547510 tasks.go:68] running task 2 of 2: Updating Prometheus Operator
+I0914 16:51:46.534926  547510 tasks.go:68] running task 1 of 2: Updating metrics scraping client CA
+I0914 16:51:46.534943  547510 assets.go:49] Reading manifest from memory: prometheus-operator/operator-certs-ca-bundle.yaml
+I0914 16:51:46.755174  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service-account.yaml
+I0914 16:51:46.755550  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/metrics-client-ca.yaml
+I0914 16:51:46.958929  547510 assets.go:49] Reading manifest from memory: prometheus-operator/cluster-role.yaml
+I0914 16:51:47.369106  547510 tasks.go:74] ran task 1 of 2: Updating metrics scraping client CA
+I0914 16:51:47.535333  547510 assets.go:49] Reading manifest from memory: prometheus-operator/cluster-role-binding.yaml
+I0914 16:51:47.666141  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service.yaml
+I0914 16:51:48.080282  547510 assets.go:49] Reading manifest from memory: prometheus-operator/deployment.yaml
+I0914 16:51:51.196444  547510 assets.go:49] Reading manifest from memory: prometheus-operator/prometheus-rule-validating-webhook.yaml
+I0914 16:51:51.474183  547510 assets.go:49] Reading manifest from memory: prometheus-operator/prometheus-rule.yaml
+I0914 16:51:52.386801  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service-monitor.yaml
+I0914 16:51:52.662650  547510 tasks.go:74] ran task 2 of 2: Updating Prometheus Operator
+I0914 16:51:52.662725  547510 tasks.go:47] processing task group 2 of 2
+I0914 16:51:52.662798  547510 tasks.go:68] running task 15 of 15: Updating Control Plane components
+I0914 16:51:52.662835  547510 tasks.go:68] running task 6 of 15: Updating Alertmanager
+I0914 16:51:52.662855  547510 tasks.go:68] running task 10 of 15: Updating prometheus-adapter
+I0914 16:51:52.662893  547510 assets.go:49] Reading manifest from memory: alertmanager/route.yaml
+I0914 16:51:52.662908  547510 tasks.go:68] running task 7 of 15: Updating node-exporter
+I0914 16:51:52.662933  547510 assets.go:49] Reading manifest from memory: node-exporter/security-context-constraints.yaml
+I0914 16:51:52.663002  547510 tasks.go:68] running task 3 of 15: Updating Grafana
+I0914 16:51:52.663043  547510 tasks.go:68] running task 4 of 15: Updating Prometheus-k8s
+I0914 16:51:52.663066  547510 assets.go:49] Reading manifest from memory: grafana/cluster-role.yaml
+I0914 16:51:52.663095  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/serving-certs-ca-bundle.yaml
+I0914 16:51:52.663185  547510 tasks.go:68] running task 5 of 15: Updating Prometheus-user-workload
+I0914 16:51:52.663216  547510 tasks.go:68] running task 12 of 15: Updating configuration sharing
+I0914 16:51:52.663325  547510 tasks.go:68] running task 11 of 15: Updating Telemeter client
+I0914 16:51:52.663273  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-monitor-thanos-sidecar.yaml
+I0914 16:51:52.663378  547510 assets.go:49] Reading manifest from memory: telemeter-client/serving-certs-ca-bundle.yaml
+I0914 16:51:52.663409  547510 tasks.go:68] running task 13 of 15: Updating Thanos Querier
+I0914 16:51:52.663450  547510 tasks.go:68] running task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:51:52.663463  547510 assets.go:49] Reading manifest from memory: thanos-querier/service.yaml
+I0914 16:51:52.663488  547510 assets.go:49] Reading manifest from memory: thanos-ruler/thanos-ruler-prometheus-rule.yaml
+I0914 16:51:52.663961  547510 tasks.go:68] running task 8 of 15: Updating kube-state-metrics
+I0914 16:51:52.664020  547510 tasks.go:68] running task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:51:52.664028  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service-account.yaml
+I0914 16:51:52.664064  547510 tasks.go:68] running task 9 of 15: Updating openshift-state-metrics
+I0914 16:51:52.664087  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service-account.yaml
+I0914 16:51:52.664111  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/route.yaml
+I0914 16:51:52.664367  547510 tasks.go:68] running task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:51:52.664405  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/service.yaml
+I0914 16:51:52.664835  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/deployment.yaml
+I0914 16:51:52.665046  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role.yaml
+I0914 16:51:52.898842  547510 assets.go:49] Reading manifest from memory: telemeter-client/service-account.yaml
+I0914 16:51:52.898943  547510 assets.go:49] Reading manifest from memory: control-plane/prometheus-rule.yaml
+I0914 16:51:53.047515  547510 assets.go:49] Reading manifest from memory: alertmanager/route.yaml
+I0914 16:51:53.055145  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-monitor.yaml
+I0914 16:51:53.055271  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role.yaml
+I0914 16:51:53.055503  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/cluster-role.yaml
+I0914 16:51:53.055564  547510 assets.go:49] Reading manifest from memory: grafana/cluster-role-binding.yaml
+I0914 16:51:53.055615  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service-monitor.yaml
+I0914 16:51:53.061649  547510 assets.go:49] Reading manifest from memory: thanos-ruler/route.yaml
+I0914 16:51:53.061803  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/kubelet-serving-ca-bundle.yaml
+I0914 16:51:53.061936  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/cluster-role.yaml
+I0914 16:51:53.062119  547510 assets.go:49] Reading manifest from memory: node-exporter/service-account.yaml
+I0914 16:51:53.192978  547510 assets.go:49] Reading manifest from memory: grafana/route.yaml
+I0914 16:51:53.193045  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/cluster-role-view.yaml
+I0914 16:51:53.193060  547510 assets.go:49] Reading manifest from memory: grafana/route.yaml
+I0914 16:51:53.193069  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-server-resources.yaml
+I0914 16:51:53.199649  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service.yaml
+I0914 16:51:53.323636  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service.yaml
+I0914 16:51:53.323822  547510 assets.go:49] Reading manifest from memory: thanos-querier/route.yaml
+I0914 16:51:53.324024  547510 assets.go:49] Reading manifest from memory: node-exporter/cluster-role.yaml
+I0914 16:51:53.801048  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:51:53.801134  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/cluster-role-binding.yaml
+I0914 16:51:53.801187  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role-binding.yaml
+I0914 16:51:53.856842  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/route.yaml
+I0914 16:51:53.857177  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/cluster-role-binding.yaml
+I0914 16:51:53.857298  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/cluster-role-binding.yaml
+I0914 16:51:53.857368  547510 assets.go:49] Reading manifest from memory: thanos-querier/route.yaml
+I0914 16:51:53.864901  547510 assets.go:49] Reading manifest from memory: thanos-ruler/cluster-role.yaml
+I0914 16:51:53.929706  547510 assets.go:49] Reading manifest from memory: control-plane/service-monitor-kubelet.yaml
+I0914 16:51:53.932815  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role-binding-view.yaml
+I0914 16:51:53.933028  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service.yaml
+I0914 16:51:54.003815  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-rules-edit-cluster-role.yaml
+I0914 16:51:54.003904  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-aggregated-metrics-reader.yaml
+I0914 16:51:54.003991  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/alertmanager-role-binding.yaml
+I0914 16:51:54.004080  547510 assets.go:49] Reading manifest from memory: node-exporter/cluster-role-binding.yaml
+I0914 16:51:54.010418  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service.yaml
+I0914 16:51:54.057463  547510 assets.go:49] Reading manifest from memory: thanos-ruler/cluster-role-binding.yaml
+I0914 16:51:54.130816  547510 assets.go:49] Reading manifest from memory: telemeter-client/service.yaml
+I0914 16:51:54.144948  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/cluster-role.yaml
+I0914 16:51:54.145095  547510 assets.go:49] Reading manifest from memory: node-exporter/service.yaml
+I0914 16:51:54.187360  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service-account.yaml
+I0914 16:51:54.197937  547510 assets.go:49] Reading manifest from memory: alertmanager/secret.yaml
+I0914 16:51:54.275346  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-rules-view-cluster-role.yaml
+I0914 16:51:54.275471  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding.yaml
+I0914 16:51:54.947517  547510 assets.go:49] Reading manifest from memory: alertmanager/kube-rbac-proxy-secret.yaml
+I0914 16:51:54.947897  547510 assets.go:49] Reading manifest from memory: thanos-ruler/alertmanager-role-binding.yaml
+I0914 16:51:54.947929  547510 tasks.go:74] ran task 12 of 15: Updating configuration sharing
+I0914 16:51:54.948522  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/deployment.yaml
+I0914 16:51:54.948651  547510 assets.go:49] Reading manifest from memory: telemeter-client/secret.yaml
+I0914 16:51:54.948698  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding-delegator.yaml
+I0914 16:51:54.948840  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/deployment.yaml
+I0914 16:51:54.948906  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service-account.yaml
+I0914 16:51:54.949359  547510 assets.go:49] Reading manifest from memory: control-plane/service-monitor-etcd.yaml
+I0914 16:51:55.150802  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/grpc-tls-secret.yaml
+I0914 16:51:55.150938  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/prometheus.yaml
+I0914 16:51:55.151613  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-edit-cluster-role.yaml
+I0914 16:51:55.151642  547510 assets.go:49] Reading manifest from memory: alertmanager/cluster-role.yaml
+I0914 16:51:55.151656  547510 assets.go:49] Reading manifest from memory: node-exporter/daemonset.yaml
+I0914 16:51:55.151694  547510 assets.go:49] Reading manifest from memory: thanos-querier/oauth-cookie-secret.yaml
+I0914 16:51:55.151710  547510 assets.go:49] Reading manifest from memory: grafana/proxy-secret.yaml
+I0914 16:51:55.304377  547510 assets.go:49] Reading manifest from memory: grafana/config.yaml
+I0914 16:51:55.304778  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding-view.yaml
+I0914 16:51:55.305079  547510 tasks.go:74] ran task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:51:55.306328  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:51:55.309076  547510 assets.go:49] Reading manifest from memory: thanos-ruler/oauth-cookie-secret.yaml
+I0914 16:51:55.311060  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/proxy-secret.yaml
+I0914 16:51:55.458336  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/user-workload-config-edit-role.yaml
+I0914 16:51:55.458772  547510 assets.go:49] Reading manifest from memory: telemeter-client/trusted-ca-bundle.yaml
+I0914 16:51:55.663594  547510 assets.go:49] Reading manifest from memory: alertmanager/cluster-role-binding.yaml
+I0914 16:51:55.664338  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:51:55.664451  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/role-binding-auth-reader.yaml
+I0914 16:51:55.664663  547510 assets.go:49] Reading manifest from memory: thanos-ruler/trusted-ca-bundle.yaml
+I0914 16:51:55.830431  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:51:55.830584  547510 assets.go:49] Reading manifest from memory: alertmanager/service-account.yaml
+I0914 16:51:55.830639  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service-account.yaml
+I0914 16:51:55.971663  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:51:55.971899  547510 assets.go:49] Reading manifest from memory: alertmanager/proxy-secret.yaml
+I0914 16:51:55.972289  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-alertmanager-edit-role.yaml
+I0914 16:51:55.972970  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-definitions.yaml
+I0914 16:51:55.973012  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/config-map.yaml
+I0914 16:51:56.104289  547510 assets.go:49] Reading manifest from memory: alertmanager/service.yaml
+I0914 16:51:56.297587  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/configmap-prometheus.yaml
+I0914 16:51:56.312736  547510 tasks.go:74] ran task 15 of 15: Updating Control Plane components
+I0914 16:51:56.355157  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/prometheus-rule.yaml
+I0914 16:51:56.439125  547510 assets.go:49] Reading manifest from memory: alertmanager/trusted-ca-bundle.yaml
+I0914 16:51:56.439286  547510 assets.go:49] Reading manifest from memory: thanos-querier/oauth-htpasswd-secret.yaml
+I0914 16:51:58.637418  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/htpasswd-secret.yaml
+I0914 16:51:58.637624  547510 assets.go:49] Reading manifest from memory: thanos-ruler/grpc-tls-secret.yaml
+I0914 16:51:58.637724  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/prometheus-rule.yaml
+I0914 16:51:58.638046  547510 assets.go:49] Reading manifest from memory: thanos-ruler/alertmanagers-config-secret.yaml
+I0914 16:51:58.638609  547510 assets.go:49] Reading manifest from memory: thanos-ruler/thanos-ruler.yaml
+I0914 16:51:58.639180  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service-monitor.yaml
+I0914 16:51:58.840749  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service.yaml
+I0914 16:51:59.760448  547510 assets.go:49] Reading manifest from memory: thanos-querier/kube-rbac-proxy-secret.yaml
+I0914 16:51:59.763828  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/service-monitor.yaml
+I0914 16:52:04.544482  547510 assets.go:49] Reading manifest from memory: node-exporter/prometheus-rule.yaml
+I0914 16:52:04.854888  547510 reflector.go:535] pkg/operator/operator.go:364: Watch close - *v1.Secret total 30 items received
+I0914 16:52:05.010998  547510 tasks.go:74] ran task 9 of 15: Updating openshift-state-metrics
+I0914 16:52:05.151946  547510 assets.go:49] Reading manifest from memory: thanos-querier/kube-rbac-proxy-rules-secret.yaml
+I0914 16:52:05.174030  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service-monitor.yaml
+I0914 16:52:05.174056  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/kube-rbac-proxy-secret.yaml
+I0914 16:52:05.180149  547510 assets.go:49] Reading manifest from memory: telemeter-client/deployment.yaml
+I0914 16:52:05.317447  547510 assets.go:49] Reading manifest from memory: thanos-querier/service-account.yaml
+I0914 16:52:05.317530  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:52:05.457757  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-account.yaml
+I0914 16:52:05.487829  547510 assets.go:49] Reading manifest from memory: node-exporter/service-monitor.yaml
+I0914 16:52:06.652788  547510 assets.go:49] Reading manifest from memory: thanos-querier/cluster-role.yaml
+I0914 16:52:08.416027  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/cluster-role.yaml
+I0914 16:52:08.548397  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service.yaml
+I0914 16:52:08.548429  547510 tasks.go:74] ran task 8 of 15: Updating kube-state-metrics
+I0914 16:52:08.838898  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-thanos-sidecar.yaml
+I0914 16:52:08.838974  547510 assets.go:49] Reading manifest from memory: thanos-querier/cluster-role-binding.yaml
+I0914 16:52:08.839359  547510 tasks.go:74] ran task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:52:08.839877  547510 tasks.go:74] ran task 7 of 15: Updating node-exporter
+I0914 16:52:08.854747  547510 assets.go:49] Reading manifest from memory: alertmanager/alertmanager.yaml
+I0914 16:52:08.968393  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/cluster-role-binding.yaml
+I0914 16:52:08.968530  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:52:09.905734  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-binding-config.yaml
+I0914 16:52:09.905871  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/alertmanager-role-binding.yaml
+I0914 16:52:10.041497  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-binding-specific-namespaces.yaml
+I0914 16:52:10.041728  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-config.yaml
+I0914 16:52:10.162712  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/deployment.yaml
+I0914 16:52:10.163044  547510 assets.go:49] Reading manifest from memory: thanos-querier/grpc-tls-secret.yaml
+I0914 16:52:10.168612  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-specific-namespaces.yaml
+I0914 16:52:10.296333  547510 assets.go:49] Reading manifest from memory: thanos-ruler/query-config-secret.yaml
+I0914 16:52:10.302404  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-config.yaml
+I0914 16:52:10.302464  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-specific-namespaces.yaml
+I0914 16:52:10.429858  547510 assets.go:49] Reading manifest from memory: telemeter-client/service-monitor.yaml
+I0914 16:52:10.683727  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/cluster-role-binding.yaml
+I0914 16:52:10.803582  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service-monitor.yaml
+I0914 16:52:10.814578  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/cluster-role.yaml
+I0914 16:52:10.825208  547510 assets.go:49] Reading manifest from memory: thanos-querier/trusted-ca-bundle.yaml
+I0914 16:52:10.828044  547510 tasks.go:74] ran task 11 of 15: Updating Telemeter client
+I0914 16:52:11.507764  547510 tasks.go:74] ran task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:52:11.515185  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-account.yaml
+I0914 16:52:11.757987  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/serving-certs-ca-bundle.yaml
+I0914 16:52:11.915472  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/pod-disruption-budget.yaml
+I0914 16:52:12.052672  547510 tasks.go:74] ran task 5 of 15: Updating Prometheus-user-workload
+I0914 16:52:12.657569  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service-monitor.yaml
+I0914 16:52:12.926952  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/api-service.yaml
+I0914 16:52:14.332410  547510 reflector.go:535] pkg/operator/operator.go:364: Watch close - *v1.ConfigMap total 6 items received
+I0914 16:52:14.909367  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-binding-specific-namespaces.yaml
+I0914 16:52:14.928042  547510 assets.go:49] Reading manifest from memory: thanos-querier/deployment.yaml
+I0914 16:52:15.048263  547510 tasks.go:74] ran task 10 of 15: Updating prometheus-adapter
+I0914 16:52:15.746713  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-binding-config.yaml
+I0914 16:52:16.046280  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus-rule.yaml
+I0914 16:52:16.476967  547510 assets.go:49] Reading manifest from memory: thanos-querier/pod-disruption-budget.yaml
+I0914 16:52:16.503412  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus-rule-thanos-sidecar.yaml
+I0914 16:52:16.768807  547510 assets.go:49] Reading manifest from memory: thanos-querier/service-monitor.yaml
+I0914 16:52:16.916282  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service.yaml
+I0914 16:52:17.049117  547510 assets.go:49] Reading manifest from memory: thanos-querier/prometheus-rule.yaml
+I0914 16:52:17.446914  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-sources.yaml
+I0914 16:52:17.449340  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-thanos-sidecar.yaml
+I0914 16:52:17.591813  547510 tasks.go:74] ran task 13 of 15: Updating Thanos Querier
+I0914 16:52:17.710407  547510 assets.go:49] Reading manifest from memory: grafana/service-account.yaml
+I0914 16:52:17.716964  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/metrics-client-certs.yaml
+I0914 16:52:17.862563  547510 assets.go:49] Reading manifest from memory: grafana/service.yaml
+I0914 16:52:18.150287  547510 assets.go:49] Reading manifest from memory: grafana/trusted-ca-bundle.yaml
+I0914 16:52:18.852688  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:52:20.620022  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/grpc-tls-secret.yaml
+I0914 16:52:21.148164  547510 assets.go:49] Reading manifest from memory: alertmanager/prometheus-rule.yaml
+I0914 16:52:21.163642  547510 assets.go:49] Reading manifest from memory: grafana/deployment.yaml
+I0914 16:52:21.284243  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/trusted-ca-bundle.yaml
+I0914 16:52:21.448989  547510 assets.go:49] Reading manifest from memory: alertmanager/service-monitor.yaml
+I0914 16:52:21.924019  547510 tasks.go:74] ran task 6 of 15: Updating Alertmanager
+I0914 16:52:23.909501  547510 assets.go:49] Reading manifest from memory: grafana/service-monitor.yaml
+I0914 16:52:24.338939  547510 tasks.go:74] ran task 3 of 15: Updating Grafana
+I0914 16:52:24.366557  547510 prometheus.go:340] reconciling Prometheus additionalAlertmanagerConfigs secret
+I0914 16:52:24.650641  547510 prometheus.go:345] initializing Prometheus object
+I0914 16:52:24.650689  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus.yaml
+I0914 16:52:24.655143  547510 prometheus.go:351] reconciling Prometheus object
+I0914 16:52:24.967061  547510 prometheus.go:357] waiting for Prometheus object changes
+I0914 16:52:31.332570  547510 reflector.go:535] k8s.io/client-go/informers/factory.go:134: Watch close - *v1.Secret total 32 items received
+I0914 16:52:33.941319  547510 reflector.go:535] pkg/operator/operator.go:364: Watch close - *v1.Secret total 1 items received
+I0914 16:52:33.941387  547510 reflector.go:535] pkg/operator/operator.go:364: Watch close - *v1.APIServer total 5 items received
+I0914 16:52:33.941443  547510 reflector.go:535] pkg/operator/operator.go:364: Watch close - *v1.ConfigMap total 0 items received
+I0914 16:52:33.941444  547510 reflector.go:535] pkg/operator/operator.go:364: Watch close - *v1.ConfigMap total 5 items received
+I0914 16:52:33.941537  547510 reflector.go:535] pkg/operator/operator.go:364: Watch close - *v1.ConfigMap total 5 items received
+I0914 16:52:33.941880  547510 reflector.go:535] k8s.io/client-go/informers/factory.go:134: Watch close - *v1.CertificateSigningRequest total 5 items received
+I0914 16:52:33.941881  547510 reflector.go:535] k8s.io/client-go/informers/factory.go:134: Watch close - *v1.Secret total 0 items received
+I0914 16:52:33.941950  547510 reflector.go:535] pkg/operator/operator.go:364: Watch close - *v1.ConfigMap total 100 items received
+I0914 16:52:33.941950  547510 reflector.go:535] pkg/operator/operator.go:364: Watch close - *v1.Infrastructure total 1 items received
+I0914 16:52:33.942201  547510 reflector.go:535] pkg/operator/operator.go:361: Watch close - *v1.ConfigMap total 5 items received
+I0914 16:52:34.472073  547510 operator.go:430] Triggering update due to an apiserver config update
+I0914 16:52:34.579419  547510 operator.go:424] Triggering update due to an infrastructure update
+I0914 16:52:35.577580  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-monitor.yaml
+I0914 16:52:35.859413  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-monitor-thanos-sidecar.yaml
+I0914 16:52:37.010374  547510 tasks.go:74] ran task 4 of 15: Updating Prometheus-k8s
+I0914 16:52:37.010400  547510 operator.go:580] Updating ClusterOperator status to done.
+W0914 16:52:37.306064  547510 operator.go:683] No Cluster Monitoring ConfigMap was found. Using defaults.
+I0914 16:52:38.138853  547510 operator.go:556] Updating ClusterOperator status to in progress.
+I0914 16:52:38.465875  547510 tasks.go:47] processing task group 1 of 2
+I0914 16:52:38.465973  547510 tasks.go:68] running task 2 of 2: Updating Prometheus Operator
+I0914 16:52:38.466007  547510 assets.go:49] Reading manifest from memory: prometheus-operator/operator-certs-ca-bundle.yaml
+I0914 16:52:38.466068  547510 tasks.go:68] running task 1 of 2: Updating metrics scraping client CA
+I0914 16:52:38.602392  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/metrics-client-ca.yaml
+I0914 16:52:38.608784  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service-account.yaml
+I0914 16:52:38.751702  547510 assets.go:49] Reading manifest from memory: prometheus-operator/cluster-role.yaml
+I0914 16:52:38.907342  547510 tasks.go:74] ran task 1 of 2: Updating metrics scraping client CA
+I0914 16:52:39.016388  547510 assets.go:49] Reading manifest from memory: prometheus-operator/cluster-role-binding.yaml
+I0914 16:52:39.153111  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service.yaml
+I0914 16:52:39.570609  547510 assets.go:49] Reading manifest from memory: prometheus-operator/deployment.yaml
+I0914 16:52:42.592412  547510 assets.go:49] Reading manifest from memory: prometheus-operator/prometheus-rule-validating-webhook.yaml
+I0914 16:52:42.864494  547510 assets.go:49] Reading manifest from memory: prometheus-operator/prometheus-rule.yaml
+I0914 16:52:43.268506  547510 assets.go:49] Reading manifest from memory: prometheus-operator/service-monitor.yaml
+I0914 16:52:43.564256  547510 tasks.go:74] ran task 2 of 2: Updating Prometheus Operator
+I0914 16:52:43.564275  547510 tasks.go:47] processing task group 2 of 2
+I0914 16:52:43.564292  547510 tasks.go:68] running task 15 of 15: Updating Control Plane components
+I0914 16:52:43.564297  547510 tasks.go:68] running task 4 of 15: Updating Prometheus-k8s
+I0914 16:52:43.564307  547510 tasks.go:68] running task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:52:43.564313  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/serving-certs-ca-bundle.yaml
+I0914 16:52:43.564322  547510 tasks.go:68] running task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:52:43.564332  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/deployment.yaml
+I0914 16:52:43.564346  547510 tasks.go:68] running task 9 of 15: Updating openshift-state-metrics
+I0914 16:52:43.564355  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service-account.yaml
+I0914 16:52:43.564355  547510 tasks.go:68] running task 6 of 15: Updating Alertmanager
+I0914 16:52:43.564364  547510 assets.go:49] Reading manifest from memory: alertmanager/route.yaml
+I0914 16:52:43.564407  547510 tasks.go:68] running task 5 of 15: Updating Prometheus-user-workload
+I0914 16:52:43.564428  547510 tasks.go:68] running task 7 of 15: Updating node-exporter
+I0914 16:52:43.564418  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-monitor-thanos-sidecar.yaml
+I0914 16:52:43.564438  547510 tasks.go:68] running task 10 of 15: Updating prometheus-adapter
+I0914 16:52:43.564439  547510 assets.go:49] Reading manifest from memory: node-exporter/security-context-constraints.yaml
+I0914 16:52:43.564447  547510 tasks.go:68] running task 11 of 15: Updating Telemeter client
+I0914 16:52:43.564454  547510 assets.go:49] Reading manifest from memory: telemeter-client/serving-certs-ca-bundle.yaml
+I0914 16:52:43.564523  547510 tasks.go:68] running task 8 of 15: Updating kube-state-metrics
+I0914 16:52:43.564530  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service-account.yaml
+I0914 16:52:43.564542  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/service.yaml
+I0914 16:52:43.564571  547510 tasks.go:68] running task 12 of 15: Updating configuration sharing
+I0914 16:52:43.564577  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/route.yaml
+I0914 16:52:43.564600  547510 tasks.go:68] running task 13 of 15: Updating Thanos Querier
+I0914 16:52:43.564606  547510 assets.go:49] Reading manifest from memory: thanos-querier/service.yaml
+I0914 16:52:43.564657  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role.yaml
+I0914 16:52:43.564682  547510 tasks.go:68] running task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:52:43.564688  547510 assets.go:49] Reading manifest from memory: thanos-ruler/thanos-ruler-prometheus-rule.yaml
+I0914 16:52:43.564712  547510 tasks.go:68] running task 3 of 15: Updating Grafana
+I0914 16:52:43.564719  547510 assets.go:49] Reading manifest from memory: grafana/cluster-role.yaml
+I0914 16:52:43.704508  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/cluster-role.yaml
+I0914 16:52:43.712348  547510 assets.go:49] Reading manifest from memory: telemeter-client/service-account.yaml
+I0914 16:52:43.722180  547510 assets.go:49] Reading manifest from memory: thanos-ruler/route.yaml
+I0914 16:52:43.722285  547510 assets.go:49] Reading manifest from memory: control-plane/prometheus-rule.yaml
+I0914 16:52:43.722409  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service-monitor.yaml
+I0914 16:52:43.722590  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/cluster-role.yaml
+I0914 16:52:43.722671  547510 assets.go:49] Reading manifest from memory: alertmanager/route.yaml
+I0914 16:52:43.722679  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-monitor.yaml
+I0914 16:52:43.838771  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role.yaml
+I0914 16:52:43.871639  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service.yaml
+I0914 16:52:43.871660  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/kubelet-serving-ca-bundle.yaml
+I0914 16:52:43.871710  547510 assets.go:49] Reading manifest from memory: thanos-querier/route.yaml
+I0914 16:52:43.871733  547510 assets.go:49] Reading manifest from memory: grafana/route.yaml
+I0914 16:52:43.871743  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-server-resources.yaml
+I0914 16:52:43.871829  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service.yaml
+I0914 16:52:43.878933  547510 assets.go:49] Reading manifest from memory: grafana/cluster-role-binding.yaml
+I0914 16:52:43.878980  547510 assets.go:49] Reading manifest from memory: node-exporter/service-account.yaml
+I0914 16:52:43.879067  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-rules-edit-cluster-role.yaml
+I0914 16:52:43.986347  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/cluster-role-binding.yaml
+I0914 16:52:44.002428  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:52:44.016996  547510 assets.go:49] Reading manifest from memory: thanos-ruler/cluster-role.yaml
+I0914 16:52:44.017046  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/cluster-role-binding.yaml
+I0914 16:52:44.017055  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/cluster-role-binding.yaml
+I0914 16:52:44.017127  547510 assets.go:49] Reading manifest from memory: thanos-querier/route.yaml
+I0914 16:52:44.017156  547510 assets.go:49] Reading manifest from memory: grafana/route.yaml
+I0914 16:52:44.027308  547510 assets.go:49] Reading manifest from memory: node-exporter/cluster-role.yaml
+I0914 16:52:44.160658  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role-binding.yaml
+I0914 16:52:44.160830  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service.yaml
+I0914 16:52:44.167875  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/route.yaml
+I0914 16:52:44.363932  547510 assets.go:49] Reading manifest from memory: control-plane/service-monitor-kubelet.yaml
+I0914 16:52:44.388289  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/alertmanager-role-binding.yaml
+I0914 16:52:44.388309  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-aggregated-metrics-reader.yaml
+I0914 16:52:44.388383  547510 assets.go:49] Reading manifest from memory: thanos-ruler/cluster-role-binding.yaml
+I0914 16:52:44.388748  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-rules-view-cluster-role.yaml
+I0914 16:52:44.394688  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service.yaml
+I0914 16:52:44.394767  547510 assets.go:49] Reading manifest from memory: telemeter-client/cluster-role-binding-view.yaml
+I0914 16:52:44.530025  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service-account.yaml
+I0914 16:52:44.537317  547510 assets.go:49] Reading manifest from memory: telemeter-client/service.yaml
+I0914 16:52:44.537368  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/cluster-role.yaml
+I0914 16:52:44.537418  547510 assets.go:49] Reading manifest from memory: node-exporter/cluster-role-binding.yaml
+I0914 16:52:44.546692  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/deployment.yaml
+I0914 16:52:44.659695  547510 assets.go:49] Reading manifest from memory: control-plane/service-monitor-etcd.yaml
+I0914 16:52:44.667502  547510 assets.go:49] Reading manifest from memory: thanos-ruler/alertmanager-role-binding.yaml
+I0914 16:52:44.673999  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-edit-cluster-role.yaml
+I0914 16:52:44.674061  547510 assets.go:49] Reading manifest from memory: prometheus-operator-user-workload/service-account.yaml
+I0914 16:52:44.674073  547510 tasks.go:74] ran task 12 of 15: Updating configuration sharing
+I0914 16:52:44.674132  547510 assets.go:49] Reading manifest from memory: node-exporter/service.yaml
+I0914 16:52:44.674163  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding.yaml
+I0914 16:52:44.689050  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/deployment.yaml
+I0914 16:52:44.823901  547510 assets.go:49] Reading manifest from memory: thanos-ruler/oauth-cookie-secret.yaml
+I0914 16:52:44.823901  547510 tasks.go:74] ran task 1 of 15: Updating user workload Prometheus Operator
+I0914 16:52:44.823965  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding-delegator.yaml
+I0914 16:52:44.832027  547510 assets.go:49] Reading manifest from memory: telemeter-client/secret.yaml
+I0914 16:52:44.864285  547510 assets.go:49] Reading manifest from memory: alertmanager/secret.yaml
+I0914 16:52:44.964090  547510 assets.go:49] Reading manifest from memory: thanos-ruler/trusted-ca-bundle.yaml
+I0914 16:52:44.964106  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/cluster-role-view.yaml
+I0914 16:52:44.964153  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/cluster-role-binding-view.yaml
+I0914 16:52:44.970597  547510 assets.go:49] Reading manifest from memory: node-exporter/daemonset.yaml
+I0914 16:52:44.987250  547510 assets.go:49] Reading manifest from memory: alertmanager/kube-rbac-proxy-secret.yaml
+I0914 16:52:45.104640  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/role-binding-auth-reader.yaml
+I0914 16:52:45.110903  547510 assets.go:49] Reading manifest from memory: telemeter-client/trusted-ca-bundle.yaml
+I0914 16:52:45.122962  547510 assets.go:49] Reading manifest from memory: alertmanager/cluster-role.yaml
+I0914 16:52:45.138794  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/grpc-tls-secret.yaml
+I0914 16:52:45.138885  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/prometheus.yaml
+I0914 16:52:45.157236  547510 assets.go:49] Reading manifest from memory: thanos-querier/oauth-cookie-secret.yaml
+I0914 16:52:45.244909  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:52:45.244946  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/user-workload-config-edit-role.yaml
+I0914 16:52:45.244957  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service-account.yaml
+I0914 16:52:45.299274  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:52:45.375479  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/config-map.yaml
+I0914 16:52:45.432998  547510 assets.go:49] Reading manifest from memory: alertmanager/cluster-role-binding.yaml
+I0914 16:52:45.507099  547510 tasks.go:74] ran task 15 of 15: Updating Control Plane components
+I0914 16:52:45.519685  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/monitoring-alertmanager-edit-role.yaml
+I0914 16:52:45.519765  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/proxy-secret.yaml
+I0914 16:52:45.519841  547510 assets.go:49] Reading manifest from memory: grafana/proxy-secret.yaml
+I0914 16:52:45.566521  547510 assets.go:49] Reading manifest from memory: alertmanager/service-account.yaml
+I0914 16:52:45.647992  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/configmap-prometheus.yaml
+I0914 16:52:45.654656  547510 assets.go:49] Reading manifest from memory: grafana/config.yaml
+I0914 16:52:45.654750  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:52:45.702317  547510 assets.go:49] Reading manifest from memory: alertmanager/proxy-secret.yaml
+I0914 16:52:46.261270  547510 assets.go:49] Reading manifest from memory: alertmanager/service.yaml
+I0914 16:52:46.261457  547510 assets.go:49] Reading manifest from memory: openshift-state-metrics/service-monitor.yaml
+I0914 16:52:46.271323  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/prometheus-rule.yaml
+I0914 16:52:46.271544  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/prometheus-rule.yaml
+I0914 16:52:46.387062  547510 assets.go:49] Reading manifest from memory: thanos-ruler/grpc-tls-secret.yaml
+I0914 16:52:46.387195  547510 assets.go:49] Reading manifest from memory: thanos-ruler/alertmanagers-config-secret.yaml
+I0914 16:52:46.387331  547510 assets.go:49] Reading manifest from memory: thanos-ruler/thanos-ruler.yaml
+I0914 16:52:46.394171  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-datasources.yaml
+I0914 16:52:46.394234  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service.yaml
+I0914 16:52:46.437454  547510 assets.go:49] Reading manifest from memory: thanos-querier/oauth-htpasswd-secret.yaml
+I0914 16:52:46.457303  547510 assets.go:49] Reading manifest from memory: telemeter-client/deployment.yaml
+I0914 16:52:46.535385  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-definitions.yaml
+I0914 16:52:46.549440  547510 tasks.go:74] ran task 9 of 15: Updating openshift-state-metrics
+I0914 16:52:46.551251  547510 assets.go:49] Reading manifest from memory: node-exporter/prometheus-rule.yaml
+I0914 16:52:46.568916  547510 assets.go:49] Reading manifest from memory: alertmanager/trusted-ca-bundle.yaml
+I0914 16:52:46.581402  547510 assets.go:49] Reading manifest from memory: kube-state-metrics/service-monitor.yaml
+I0914 16:52:46.630419  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/service-monitor.yaml
+I0914 16:52:46.719382  547510 assets.go:49] Reading manifest from memory: thanos-querier/kube-rbac-proxy-secret.yaml
+I0914 16:52:46.787425  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/htpasswd-secret.yaml
+I0914 16:52:46.865084  547510 assets.go:49] Reading manifest from memory: node-exporter/service-monitor.yaml
+I0914 16:52:46.972896  547510 assets.go:49] Reading manifest from memory: thanos-querier/kube-rbac-proxy-rules-secret.yaml
+I0914 16:52:46.972926  547510 tasks.go:74] ran task 8 of 15: Updating kube-state-metrics
+I0914 16:52:46.972953  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:52:47.107818  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/kube-rbac-proxy-secret.yaml
+I0914 16:52:47.107892  547510 assets.go:49] Reading manifest from memory: thanos-querier/service-account.yaml
+I0914 16:52:47.135171  547510 tasks.go:74] ran task 7 of 15: Updating node-exporter
+I0914 16:52:47.247186  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-account.yaml
+I0914 16:52:47.247241  547510 assets.go:49] Reading manifest from memory: thanos-querier/cluster-role.yaml
+I0914 16:52:47.951443  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/deployment.yaml
+I0914 16:52:47.957598  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/cluster-role.yaml
+I0914 16:52:48.139283  547510 tasks.go:74] ran task 2 of 15: Updating Cluster Monitoring Operator
+I0914 16:52:48.142937  547510 assets.go:49] Reading manifest from memory: thanos-querier/cluster-role-binding.yaml
+I0914 16:52:48.160936  547510 assets.go:49] Reading manifest from memory: alertmanager/alertmanager.yaml
+I0914 16:52:48.279408  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/cluster-role-binding.yaml
+I0914 16:52:48.286247  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:52:48.914284  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/alertmanager-role-binding.yaml
+I0914 16:52:48.981472  547510 assets.go:49] Reading manifest from memory: telemeter-client/service-monitor.yaml
+I0914 16:52:49.058613  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-config.yaml
+I0914 16:52:49.859058  547510 tasks.go:74] ran task 11 of 15: Updating Telemeter client
+I0914 16:52:49.859064  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-specific-namespaces.yaml
+I0914 16:52:49.859105  547510 assets.go:49] Reading manifest from memory: thanos-querier/grpc-tls-secret.yaml
+I0914 16:52:49.859191  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/pod-disruption-budget.yaml
+I0914 16:52:50.124227  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/service-monitor.yaml
+I0914 16:52:50.399130  547510 assets.go:49] Reading manifest from memory: thanos-querier/trusted-ca-bundle.yaml
+I0914 16:52:50.527164  547510 assets.go:49] Reading manifest from memory: prometheus-adapter/api-service.yaml
+I0914 16:52:51.284124  547510 tasks.go:74] ran task 10 of 15: Updating prometheus-adapter
+I0914 16:52:54.244351  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-binding-specific-namespaces.yaml
+I0914 16:52:55.303722  547510 assets.go:49] Reading manifest from memory: thanos-querier/deployment.yaml
+I0914 16:52:55.560192  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service.yaml
+I0914 16:52:55.840048  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/role-binding-config.yaml
+I0914 16:52:55.841358  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-thanos-sidecar.yaml
+I0914 16:52:55.978608  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-binding-config.yaml
+I0914 16:52:56.104961  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus-rule.yaml
+I0914 16:52:56.126982  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-binding-specific-namespaces.yaml
+I0914 16:52:56.383633  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-specific-namespaces.yaml
+I0914 16:52:56.428219  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/prometheus-rule-thanos-sidecar.yaml
+I0914 16:52:56.518515  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/role-config.yaml
+I0914 16:52:56.673994  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/cluster-role-binding.yaml
+I0914 16:52:56.717141  547510 assets.go:49] Reading manifest from memory: thanos-querier/pod-disruption-budget.yaml
+I0914 16:52:56.814166  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/cluster-role.yaml
+I0914 16:52:56.820768  547510 assets.go:49] Reading manifest from memory: thanos-ruler/query-config-secret.yaml
+I0914 16:52:56.820954  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service.yaml
+I0914 16:52:56.957512  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/service-account.yaml
+I0914 16:52:57.123114  547510 assets.go:49] Reading manifest from memory: thanos-ruler/service-monitor.yaml
+I0914 16:52:57.123337  547510 assets.go:49] Reading manifest from memory: thanos-querier/service-monitor.yaml
+I0914 16:52:57.123584  547510 assets.go:49] Reading manifest from memory: prometheus-user-workload/serving-certs-ca-bundle.yaml
+I0914 16:52:57.175148  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/service-thanos-sidecar.yaml
+I0914 16:52:57.257823  547510 tasks.go:74] ran task 14 of 15: Updating User Workload Thanos Ruler
+I0914 16:52:57.394478  547510 tasks.go:74] ran task 5 of 15: Updating Prometheus-user-workload
+I0914 16:52:57.394627  547510 assets.go:49] Reading manifest from memory: thanos-querier/prometheus-rule.yaml
+I0914 16:52:57.553479  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/metrics-client-certs.yaml
+I0914 16:52:57.556028  547510 assets.go:49] Reading manifest from memory: grafana/dashboard-sources.yaml
+I0914 16:52:57.703081  547510 tasks.go:74] ran task 13 of 15: Updating Thanos Querier
+I0914 16:52:57.814952  547510 assets.go:49] Reading manifest from memory: grafana/service-account.yaml
+I0914 16:52:57.961660  547510 assets.go:49] Reading manifest from memory: grafana/service.yaml
+I0914 16:52:58.232145  547510 assets.go:49] Reading manifest from memory: grafana/trusted-ca-bundle.yaml
+I0914 16:52:58.682616  547510 assets.go:49] Reading manifest from memory: cluster-monitoring-operator/grpc-tls-secret.yaml
+I0914 16:53:00.027814  547510 assets.go:49] Reading manifest from memory: prometheus-k8s/grpc-tls-secret.yaml
+I0914 16:53:00.180403  547510 assets.go:49] Reading manifest from memory: grafana/deployment.yaml
+I0914 16:53:00.190302  547510 assets.go:49] Reading manifest from memory: alertmanager/prometheus-rule.yaml
